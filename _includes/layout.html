@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="inkyvoxel | Software engineer, team lead, and cyber security enthusiast.">
+    <title>inkyvoxel</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⬛</text></svg>">
+    <style>
+        body {
+            font-family: monospace;
+            font-size: 1.3rem;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main {
+            width: 90%;
+            max-width: 800px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                font-size: 1rem;
+            }
+
+            header,
+            main,
+            footer {
+                width: 90%;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: black;
+                color: white;
+            }
+
+            a:link,
+            a:visited {
+                color: lightblue;
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            body {
+                background-color: white;
+                color: black;
+            }
+
+            a:link,
+            a:visited {
+                color: darkblue;
+            }
+        }
+    </style>
+    <script defer data-domain="inkyvoxel.com" src="https://plausible.io/js/plausible.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>{{ title }}</h1>
+    </header>
+
+    <main>
+        <section>
+            {{ content}}
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 MARK BRADY. ALL RIGHTS RESERVED.</p>
+    </footer>
+</body>
+
+</html>
