@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="inkyvoxel | Software engineer, team lead, and cyber security enthusiast.">
+    <meta name="description" content="inkyvoxel | Software engineer, team lead, and cybersecurity enthusiast.">
     <title>inkyvoxel</title>
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⬛</text></svg>">
@@ -14,6 +14,7 @@
             font-size: 1.2rem;
             margin: 0;
             padding: 0;
+            line-height: 1.5;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -30,11 +31,6 @@
             font-family: monospace;
         }
 
-        pre {
-            max-width: 100%;
-            overflow-x: auto;
-        }
-
         hr {
             border-style: dashed;
         }
@@ -43,6 +39,33 @@
         main {
             width: 90%;
             max-width: 960px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        nav li {
+            float: left;
+            display: block;
+            text-align: center;
+            padding-top: 14px;
+            padding-right: 16px;
+            padding-bottom: 14px;
+            padding-left: 0;
+        }
+
+        code,
+        pre code {
+            padding: 1px 5px;
+        }
+
+        pre code {
+            display: block;
+            overflow-x: auto;
         }
 
         @media (max-width: 600px) {
@@ -59,7 +82,12 @@
 
             a:link,
             a:visited {
-                color: lightblue;
+                color: #b19af4;
+            }
+
+            code,
+            pre code {
+                background-color: #5e2ee8;
             }
         }
 
@@ -71,7 +99,12 @@
 
             a:link,
             a:visited {
-                color: darkblue;
+                color: #5e2ee8;
+            }
+
+            code,
+            pre code {
+                background-color: #b19af4;
             }
         }
     </style>
@@ -80,6 +113,13 @@
 
 <body>
     <header>
+        <nav>
+            <ul>
+                <li>inkyvoxel.com</li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
         <h1>{{ title }}</h1>
     </header>
 

@@ -1,5 +1,5 @@
 ---
-title: Software engineer, team lead, and cyber security enthusiast.
+title: Software engineer, team lead, and cybersecurity enthusiast.
 layout: layout.html
 ---
 
