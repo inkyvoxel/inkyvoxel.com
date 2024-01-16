@@ -10,9 +10,8 @@
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⬛</text></svg>">
     <style>
         body {
-            font-family: monospace;
-            font-size: 1.3rem;
-            line-height: 1.5;
+            font-family: sans-serif;
+            font-size: 1.2rem;
             margin: 0;
             padding: 0;
             display: flex;
@@ -21,20 +20,34 @@
             align-items: center;
         }
 
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        code {
+            font-family: monospace;
+        }
+
+        pre {
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        hr {
+            border-style: dashed;
+        }
+
+        header,
         main {
             width: 90%;
-            max-width: 800px;
+            max-width: 960px;
         }
 
         @media (max-width: 600px) {
             body {
                 font-size: 1rem;
-            }
-
-            header,
-            main,
-            footer {
-                width: 90%;
             }
         }
 
