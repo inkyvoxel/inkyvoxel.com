@@ -1,6 +1,7 @@
 ---
-title: Software engineer, team lead, and cybersecurity enthusiast.
-layout: layout.html
+title:  Software engineer, team lead, and cybersecurity enthusiast.
+description: I write about software engineering, leadership, and cybersecurity.
+layout: page.html
 ---
 
 {% for post in collections.post reversed %}

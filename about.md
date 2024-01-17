@@ -1,6 +1,7 @@
 ---
 title: About
-layout: layout.html
+description: About inkyvoxel
+layout: page.html
 ---
 
 Hello! I am Mark Brady. I love writing code and creating goofy art.
