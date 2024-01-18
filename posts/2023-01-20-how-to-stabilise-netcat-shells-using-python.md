@@ -1,6 +1,7 @@
 ---
 title: How to stabilise netcat shells using Python
 description: Netcat shells are unstable by default, but they can be improved and stabilised using Python.
+date: 2023-01-20
 tags:
   - cybersecurity
 ---
@@ -9,7 +10,7 @@ Netcat is easy to use and widely available on many systems, making it a perfect 
 
 If the attacking computer and the target computer are both running Linux, you can use the following technique to stabilise your remote shell, giving you a more robust terminal experience.
 
-1. Establish a reverse shell or a bind shell using netcat. I wrote about this in a [previous](/posts/reverse-shells-and-bind-shells/) post.
+1. Establish a reverse shell or a bind shell using netcat. I wrote about this in a [previous](/reverse-shells-and-bind-shells/) post.
 2. Check if Python is installed. You can do this by running `python --version`. You may need to use `python`, `python2`, or `python3` depending how the system is set up.
 3. Inside the remote shell, run `python -c 'import pty;pty.spawn("/bin/bash")'`. This spawns a more feature rich Bash shell.
 4. Run `export TERM=xterm` to set the xterm terminal emulator.

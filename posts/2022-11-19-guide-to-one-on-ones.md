@@ -1,6 +1,7 @@
 ---
 title: Guide to one-on-ones
 description: A short guide to one-on-one meetings for leaders.
+date: 2022-11-19
 tags:
   - leadership
 ---

@@ -1,13 +1,14 @@
 ---
 title: How to sniff Wi-Fi packets using airodump-ng
 description: Learn how to use airodump-ng to sniff all Wi-Fi packets within range of your wireless adapter, even if you are not connected to the target's network.
+date: 2022-01-31
 tags:
   - cybersecurity
 ---
 
 Airodump-ng installs as part of the [Aircrack-ng](https://aircrack-ng.org/) suite, which is a collection of tools to assess Wi-Fi network security.
 
-Before you can begin using airodump-ng, you will need to enable "Monitor" mode on your wireless interface. I previously wrote a guide on [how to enable monitor mode on your wireless interface](/posts/how-to-enable-monitor-mode).
+Before you can begin using airodump-ng, you will need to enable "Monitor" mode on your wireless interface. I previously wrote a guide on [how to enable monitor mode on your wireless interface](/how-to-enable-monitor-mode).
 
 Once you have enabled monitor mode, you can run `airodump-ng` with the name of the wireless interface you wish to use, e.g. `airodump-ng wlan0`.
 

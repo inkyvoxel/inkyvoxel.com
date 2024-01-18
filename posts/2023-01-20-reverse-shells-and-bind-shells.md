@@ -1,6 +1,7 @@
 ---
 title: Reverse shells and bind shells
 description: An introduction to reverse shells and bind shells using netcat.
+date: 2023-01-20
 tags:
   - cybersecurity
 ---

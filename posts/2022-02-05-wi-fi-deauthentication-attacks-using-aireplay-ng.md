@@ -1,6 +1,7 @@
 ---
 title: Wi-Fi deauthentication attacks using aireplay-ng
 description: Deauthentication attacks allow you to disconnect any device from any network, even if you are not connected to the network.
+date: 2022-02-05
 tags:
   - cybersecurity
 ---
@@ -20,9 +21,9 @@ This process is very cumbersome, but fortunately it can be automated using airep
 
 ## Quick guide
 
-Firstly, you need to put your wireless interface into monitor mode. I wrote how to do that [here](/posts/how-to-enable-monitor-mode/).
+Firstly, you need to put your wireless interface into monitor mode. I wrote how to do that [here](/how-to-enable-monitor-mode/).
 
-Secondly, you need to find the MAC address of the client you wish to deauthenticate, and the MAC address of the wireless access point it is connected to. You can achieve this using airodump-ng, which I wrote about [here](/posts/how-to-sniff-wi-fi-packets-using-airodump-ng/).
+Secondly, you need to find the MAC address of the client you wish to deauthenticate, and the MAC address of the wireless access point it is connected to. You can achieve this using airodump-ng, which I wrote about [here](/how-to-sniff-wi-fi-packets-using-airodump-ng/).
 
 Next, you need to run `aireplay-ng` in your terminal. Here is an example:
 

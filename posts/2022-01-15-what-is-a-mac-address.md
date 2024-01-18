@@ -1,6 +1,7 @@
 ---
 title: What is a MAC Address?
 description: You've probably heard the term "MAC address" used a lot, but what is it, and what is it used for?
+date: 2022-01-15
 tags:
   - cybersecurity
 ---
