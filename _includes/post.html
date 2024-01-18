@@ -3,6 +3,6 @@ layout: layout.html
 ---
 
 <h1>{{ title }}</h1>
-<p>{{ page.date }}</p>
+<p><time datetime="{{ page.date | isoDate }}">{{page.date | readableDate }}</time></p>
 
 {{ content }}
