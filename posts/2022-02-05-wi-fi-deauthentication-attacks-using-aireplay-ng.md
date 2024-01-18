@@ -1,7 +1,6 @@
 ---
 title: Wi-Fi deauthentication attacks using aireplay-ng
 description: Deauthentication attacks allow you to disconnect any device from any network, even if you are not connected to the network.
-date: 2022-02-05
 tags:
   - cybersecurity
 ---

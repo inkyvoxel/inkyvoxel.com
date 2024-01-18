@@ -1,7 +1,6 @@
 ---
 title: How to sniff Wi-Fi packets using airodump-ng
 description: Learn how to use airodump-ng to sniff all Wi-Fi packets within range of your wireless adapter, even if you are not connected to the target's network.
-date: 2022-01-31
 tags:
   - cybersecurity
 ---
