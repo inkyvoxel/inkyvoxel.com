@@ -12,5 +12,6 @@ More recently, I have been learning about cybersecurity. I especially enjoy lear
 
 Content and opinions on this website are my own.
 
-You can follow me on:
+Social links:
+
 - [GitHub](https://github.com/inkyvoxel) 💻
