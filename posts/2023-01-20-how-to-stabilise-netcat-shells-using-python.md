@@ -1,7 +1,6 @@
 ---
 title: How to stabilise netcat shells using Python
 description: Netcat shells are unstable by default, but they can be improved and stabilised using Python.
-date: 2023-01-20
 tags:
   - cybersecurity
 ---

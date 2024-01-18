@@ -1,7 +1,6 @@
 ---
 title: Linux privilege escalation with 'sudo'
 description: Learn how to exploit 'sudo' for privilege escalation on Linux.
-date: 2023-01-22
 tags:
   - cybersecurity
 ---

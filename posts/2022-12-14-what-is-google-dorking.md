@@ -1,7 +1,6 @@
 ---
 title: What is Google dorking?
 description: Find out what Google dorking is, and how you can use it to find hidden content on the internet.
-date: 2022-12-14
 tags:
   - cybersecurity
 ---
