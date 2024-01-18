@@ -2,9 +2,11 @@
 layout: layout.html
 ---
 
-<article>
-    <h1>{{ title }}</h1>
-    <p><time datetime="{{ page.date | isoDate }}">{{page.date | readableDate }}</time></p>
+<section>
+    <article>
+        <h1>{{ title }}</h1>
+        <p><time datetime="{{ page.date | isoDate }}">{{page.date | readableDate }}</time></p>
 
-    {{ content }}
-</article>
+        {{ content }}
+    </article>
+</section>
