@@ -9,5 +9,28 @@ layout: layout.liquid
     </p>
 
     {{ content }}
+
+    <hr>
+
+    {% assign previousPost = collections.post | getPreviousCollectionItem %}
+    {% assign nextPost = collections.post | getNextCollectionItem %}
+
+    {% if previousPost or nextPost %}
+      <nav>
+        <p>Enjoyed reading this? Check out more of my posts 👀</p>
+        <ul>
+          {% if previousPost -%}
+            <li>
+              Previous: <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a>
+            </li>
+          {% endif %}
+          {% if nextPost -%}
+            <li>
+              Next: <a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    {% endif %}
   </article>
 </section>
