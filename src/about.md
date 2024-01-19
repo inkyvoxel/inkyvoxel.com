@@ -1,7 +1,7 @@
 ---
 title: About
 description: About inkyvoxel
-layout: page.html
+layout: page.liquid
 ---
 
 Hello! I am Mark Brady. I love writing code and creating goofy art.

@@ -1,0 +1,13 @@
+---
+layout: layout.liquid
+---
+<section>
+  <article>
+    <h1>{{ title }}</h1>
+    <p>
+      <time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time>
+    </p>
+
+    {{ content }}
+  </article>
+</section>
