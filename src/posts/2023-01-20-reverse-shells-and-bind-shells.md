@@ -42,10 +42,3 @@ When setting up reverse and binding shells, keep in mind:
 
 - The port on the listener can be blocked by firewalls, so be sure to find a port that is open.
 - Administrative permissions (i.e. `sudo`) are needed when listening on a port below `1024`.
-
-## Closing thoughts
-
-This article shows only one way to make reverse and bind shells using netcat, but there are many other tools and methods to do this. Here are two great resources for finding more examples:
-
-- Reverse Shell Cheat Sheet: [https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology and Resources/Reverse Shell Cheatsheet.md](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md)
-- Bind Shell Cheat Sheet: [https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology and Resources/Bind Shell Cheatsheet.md](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Bind%20Shell%20Cheatsheet.md)
