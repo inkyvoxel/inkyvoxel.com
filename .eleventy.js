@@ -1,4 +1,5 @@
 const { DateTime } = require("luxon");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function (eleventyConfig) {
 	eleventyConfig.addFilter("readableDate", dateObj => {
@@ -10,6 +11,8 @@ module.exports = function (eleventyConfig) {
 	});
 
 	eleventyConfig.addPassthroughCopy({ './src/robots.txt': '/robots.txt' });
+
+	eleventyConfig.addPlugin(pluginRss);
 
 	return {
 		dir: {
