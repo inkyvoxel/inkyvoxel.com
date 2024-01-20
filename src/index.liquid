@@ -10,28 +10,28 @@ pagination:
 ---
 <section>
   <h1>{{ title }}</h1>
-  <p>{{ description }}</p>
+  <p>Hello, and welcome to my website! I write about various <a href="/tags">topics</a>, including software engineering, leadership and cybersecurity.</p>
 </section>
 
 <section>
-  <h2>Posts</h2>
+  <h2>Latest posts</h2>
 
   {% for post in posts %}
     <article>
       <h3>
         <a href="{{ post.url }}">{{ post.data.title }}</a>
       </h3>
+      <p>{{ post.data.description }}</p>
       <p>
         <time datetime="{{ page.date | isoDate }}">{{ post.date | readableDate }}</time>
       </p>
-      <p>{{ post.data.description }}</p>
       <hr>
     </article>
   {% endfor %}
 
   <nav>
     {% if pagination.href.previous %}
-      <a href="{{ pagination.href.previous }}">Previous page</a>
+      <a href="{{ pagination.href.previous }}">Newer posts</a>
     {% endif %}
 
     {% if pagination.href.previous and pagination.href.next %}
@@ -39,7 +39,7 @@ pagination:
     {% endif %}
 
     {% if pagination.href.next %}
-      <a href="{{ pagination.href.next }}">Next page</a>
+      <a href="{{ pagination.href.next }}">Older posts</a>
     {% endif %}
   </nav>
 </section>

@@ -12,6 +12,20 @@ layout: layout.liquid
 
     <hr>
 
+    <p>This post was tagged:</p>
+
+    <ul>
+      {% for tag in tags %}
+        {% unless tag == 'post' %}
+          <li>
+            <a href="/tags/{{ tag }}">{{ tag | replace: '-', ' ' }}</a>
+          </li>
+        {% endunless %}
+      {% endfor %}
+    </ul>
+
+    <hr>
+
     {% assign previousPost = collections.post | getPreviousCollectionItem %}
     {% assign nextPost = collections.post | getNextCollectionItem %}
 
@@ -21,7 +35,7 @@ layout: layout.liquid
         <ul>
           {% if previousPost -%}
             <li>
-              Previous: <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a>
+              Previous: <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a>.
             </li>
           {% endif %}
           {% if nextPost -%}

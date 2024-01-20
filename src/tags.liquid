@@ -1,0 +1,14 @@
+---
+layout: page.liquid
+title: Tags
+description: A list of tags used to categorise posts.
+---
+<ul>
+  {% for tag in collections %}
+    {% unless tag[0] == 'all' or tag[0] == 'post' %}
+      <li>
+        <a href="/tags/{{ tag[0] }}">{{ tag[0] | replace: '-', ' ' }}</a> ({{ tag[1].length }})
+      </li>
+    {% endunless %}
+  {% endfor %}
+</ul>
