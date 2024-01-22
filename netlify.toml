@@ -1,8 +1,24 @@
 [[headers]]
-  for = "/*"
+for = "/*"
 
-  [headers.values]
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    X-Content-Type-Options = "nosniff"
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
+[headers.values]
+Referrer-Policy = "strict-origin-when-cross-origin"
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "DENY"
+X-XSS-Protection = "1; mode=block"
+
+[[redirects]]
+from = "/tag/software-engineering"
+to = "/tags/software-engineering"
+
+[[redirects]]
+from = "/tag/cyber-security"
+to = "/tags/cybersecurity"
+
+[[redirects]]
+from = "/tag/leadership"
+to = "/tags/leadership"
+
+[[redirects]]
+from = "/author/inkyvoxel/"
+to = "/about"
