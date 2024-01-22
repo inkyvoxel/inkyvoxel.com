@@ -9,8 +9,8 @@ pagination:
   addAllPagesToCollections: true
 layout: page.liquid
 eleventyComputed:
-  title: >
-    All posts tagged '{{ tag | replace: "-", " " }}'
+  title: "{{ tag | replace: '-', ' ' | capitalize }} posts"
+  description: "{{ tag | replace: '-', ' ' | capitalize }} posts"
 permalink: /tags/{{ tag | slugify }}/
 ---
 {% assign posts = collections[tag] %}
@@ -19,7 +19,7 @@ permalink: /tags/{{ tag | slugify }}/
   {% for post in posts reversed %}
     <li>
       <a href="{{ post.url }}">{{ post.data.title }}</a>
-      (<time datetime="{{ page.date | isoDate }}"> {{ post.date | readableDate }}</time>)
+      (<time datetime="{{ page.date | isoDate }}">{{ post.date | readableDate }}</time>)
     </li>
   {% endfor %}
 </ul>
