@@ -3,6 +3,7 @@ title: Reverse shells and bind shells
 description: An introduction to reverse shells and bind shells using netcat.
 tags:
   - cybersecurity
+  - linux
 ---
 
 Reverse shells and bind shells are types of network connections used in hacking and penetration testing. 

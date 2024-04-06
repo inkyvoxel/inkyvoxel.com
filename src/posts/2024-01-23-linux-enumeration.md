@@ -3,6 +3,7 @@ title: Linux enumeration
 description: A cheat sheet of Linux commands used for gathering information about a system, its processes, user privileges, and network configuration.
 tags:
   - cybersecurity
+  - linux
 ---
 
 Enumeration is the process of gathering information about a computer system, network, or application. It helps gain valuable insights into the target system.

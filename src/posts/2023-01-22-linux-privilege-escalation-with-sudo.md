@@ -3,6 +3,7 @@ title: Linux privilege escalation with 'sudo'
 description: Learn how to exploit 'sudo' for privilege escalation on Linux.
 tags:
   - cybersecurity
+  - linux
 ---
 
 The `sudo` command allows users to run commands with root privileges, without being root.
