@@ -19,7 +19,7 @@ The first command removes the Bluetooth module from the Linux kernel, and the se
 
 After I run the commands, Bluetooth turns on, and pairing devices via the desktop environment starts working again.
 
-Please be aware that this is only a temporary fix. I need to run the commands every time the issue occurs (almost every reboot).
+Please note that this is only a temporary fix. I need to run the commands every time the issue occurs (which is almost every reboot). 🩹
 
 ## Closing thoughts
 
