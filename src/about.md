@@ -11,7 +11,3 @@ I am a software engineer who has been in the industry for over 10 years. I love 
 More recently, I have been learning about cybersecurity. I especially enjoy learning how to detect, exploit and fix vulnerabilities in web applications.
 
 Content and opinions on this website are my own.
-
-Social links:
-
-- [GitHub](https://github.com/inkyvoxel) 💻
