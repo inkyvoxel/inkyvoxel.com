@@ -1,7 +1,7 @@
-const { DateTime } = require("luxon");
-const pluginRss = require("@11ty/eleventy-plugin-rss");
+import { DateTime } from "luxon";
+import pluginRss from "@11ty/eleventy-plugin-rss";
 
-module.exports = function (eleventyConfig) {
+export default function (eleventyConfig) {
 	eleventyConfig.addFilter("readableDate", dateObj => {
 		return DateTime.fromJSDate(dateObj).toFormat("dd LLLL, yyyy");
 	});
