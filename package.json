@@ -1,7 +1,7 @@
 {
   "name": "inkyvoxel.com",
   "version": "1.0.0",
-  "description": "Blog for inkyvoxel.",
+  "description": "Blog for Mark Brady.",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -12,6 +12,6 @@
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "3.0.0-alpha.13",
-    "@11ty/eleventy-plugin-rss": "^1.2.0"
+    "@11ty/eleventy-plugin-rss": "^2.0.1"
   }
 }
