@@ -18,7 +18,7 @@ A reverse or bind shell is usually established after a target computer has been 
 
 Netcat is a command-line tool used for network communication. It can be used to receive reverse shells and connect to remote ports attached to bind shells on a target system. 
 
-One of netcat's main advantages is its wide availability. Netcat it is preinstalled on many Linux distributions, and it can be also installed on Windows.
+One of netcat's main advantages is its wide availability. Netcat is preinstalled on many Linux distributions, and it can be also installed on Windows.
 
 When establishing a **reverse shell**, we need to start a listener on the attacking computer, and then connect to it from the target computer.
 

@@ -73,7 +73,7 @@ Here's a list of mistakes I think many managers make with one-on-ones. Some of t
 - Cancelling last minute. If you are unable to attend, give decent notice as a common courtesy. You should try and reschedule too.
 - Infrequent one-on-ones. Don't just do a few one-on-ones scattered throughout the year.
 - Not taking any notes. You risk forgetting something, such as an action you promised to do.
-- Not giving feedback in regular one-on-ones, and leaving feedback until annual reviews. There is nothing worse than giving negative feedback in an annual review, and the direct report asking "why didn't you tell me?"
+- Not giving feedback in regular one-on-ones, and leaving feedback until annual reviews. There is nothing worse than giving negative feedback in an annual review, and the direct report asking "why didn't you tell me earlier?"
 
 ## Closing thoughts
 
