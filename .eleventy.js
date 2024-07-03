@@ -1,9 +1,16 @@
 import { DateTime } from "luxon";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 
-const siteData = require("./_data/site.json");
+import fs from 'fs/promises';
+import path from 'path';
 
-export default function (eleventyConfig) {
+async function loadSiteData() {
+	const dataPath = path.resolve('./src/_data/site.json');
+	const jsonData = await fs.readFile(dataPath, 'utf8');
+	return JSON.parse(jsonData);
+}
+
+export default async function (eleventyConfig) {
 	eleventyConfig.addFilter("readableDate", dateObj => {
 		return DateTime.fromJSDate(dateObj).toFormat("dd LLLL, yyyy");
 	});
@@ -13,6 +20,8 @@ export default function (eleventyConfig) {
 	});
 
 	eleventyConfig.addPassthroughCopy({ './src/robots.txt': '/robots.txt' });
+
+	const siteData = await loadSiteData();
 
 	eleventyConfig.addPlugin(feedPlugin, {
 		type: "atom",
