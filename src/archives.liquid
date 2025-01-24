@@ -1,0 +1,14 @@
+---
+layout: page.liquid
+title: Archives
+description: A list of all posts.
+---
+<p>This is a list of all the posts published on this site.</p>
+<ul>
+  {% for post in collections.post reversed %}
+    <li>
+      <a href="{{ post.url }}">{{ post.data.title }}</a> 
+      (<time datetime="{{ page.date | isoDate }}">{{ post.date | readableDate }}</time>)
+    </li>
+  {% endfor %}
+<ul>

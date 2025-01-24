@@ -3,6 +3,7 @@ layout: page.liquid
 title: Tags
 description: A list of tags used to categorise posts.
 ---
+<p>Use the links below to filter posts by their tags.</p>
 <ul>
   {% for tag in collections %}
     {% unless tag[0] == 'all' or tag[0] == 'post' %}
