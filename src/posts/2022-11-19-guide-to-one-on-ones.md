@@ -29,7 +29,7 @@ You should be regularly asking them where they want to go with their career, and
 
 It is really important to take notes during your one-on-ones. You don't want to forget what your direct reports tell you, especially if there's an action for you to take away from the meeting. Just be aware that these notes might be seen by other people, and your direct reports may ask to see them at some point. Make sure your notes are factual, fair and safe to share.
 
-Consider the location of your one-on-ones. Some people prefer getting out of the office. If your organisation is generous and has the budget, take your direct reports to a coffee shop. You could even go for a walk. Be sure to ask your direct report what their preference is. If you are working remote, make sure you are both in a quiet room, and have a good quality microphone and internet connection. 
+Consider the location of your one-on-ones. Some people prefer getting out of the office. If your organisation is generous and has the budget, take your direct reports to a coffee shop. You could even go for a walk. Be sure to ask your direct report what their preference is. If you are working remote, make sure you are both in a quiet room, and have a good quality microphone and internet connection.
 
 ## How frequently should you have one-on-ones?
 
@@ -39,7 +39,7 @@ I find weekly one-on-ones work the best. You can respond to problems and give fe
 
 I find around 30 minutes is the ideal length of time. Longer meetings tend to go off topic.
 
-## A basic structure for one-on-one meetings 
+## A basic structure for one-on-one meetings
 
 To get your direct reports to open up, you are going to have to ask them questions. You should prepare beforehand, and have a few relevant questions you want to ask them. I find having a structure helps keep the conversation flowing, but don't be too strict with it, as something could be raised unexpectedly that changes the flow of the conversation.
 

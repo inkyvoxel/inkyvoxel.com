@@ -20,7 +20,7 @@ print(unique_letters)
 
 **Output:** `{'o', 'h', 'e', 'l'}`
 
-Notice that the duplicate `l` in `hello` was not added to the set. 
+Notice that the duplicate `l` in `hello` was not added to the set.
 
 The order of the output looks a little funky. This is because sets are unordered collections.
 

