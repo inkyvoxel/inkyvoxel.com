@@ -1,6 +1,6 @@
 ---
 title: How to reboot a Linux server
-description: How to safely reboot your Linux server.
+description: A quick guide on how to safely reboot your Linux server.
 tags:
   - linux
 ---
