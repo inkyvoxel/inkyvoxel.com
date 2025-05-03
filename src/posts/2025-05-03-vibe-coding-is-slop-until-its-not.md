@@ -14,7 +14,7 @@ Nothing a few more prompts won't fix, right?
 
 That said, LLMs are brilliant for prototyping. I've used them to sketch out ideas that began as half-baked thoughts in my head. They're also really good for churning out one-off SQL queries and shell scripts.
 
-Lately, I've been experimenting with agent-style tools, like what the GitHub Copilot plugin provides in VS Code. I find it exciting watching it make changes to my projects (especially for monotonous tasks), and watching it think out loud. It's not flawless, and I often find myself having to undo changes, but it gives a glimpse of where things are headed.
+Lately, I've been experimenting with agent-style tools, like what the GitHub Copilot plugin provides in VS Code. I find it exciting watching it make changes to my projects (especially for monotonous tasks), and watching it think out loud. It's not flawless, and I often find myself having to undo changes, but it gives a glimpse of where things are heading.
 
 The other day, just as an experiment, I asked Copilot to refactor a large project built with `create-react-app` (now deprecated) to use Vite and Vitest. This task has been sitting in our backlog for a while, but the team hasn't had time to tackle it. I figured this might be a perfect job for an AI agent.
 
