@@ -14,14 +14,6 @@ eleventyComputed:
 permalink: /tags/{{ tag | slugify }}/
 ---
 {% assign posts = collections[tag] %}
-
-<ul>
-  {% for post in posts reversed %}
-    <li>
-      <a href="{{ post.url }}">{{ post.data.title }}</a>
-      (<time datetime="{{ page.date | isoDate }}">{{ post.date | readableDate }}</time>)
-    </li>
-  {% endfor %}
-</ul>
+{% include 'post-list.liquid' %}
 
 <p>See a list of <a href="/tags/">all tags</a>.</p>
