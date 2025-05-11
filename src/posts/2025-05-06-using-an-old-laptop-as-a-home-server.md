@@ -2,6 +2,7 @@
 title: Using an old laptop as a home server
 description: Turning an old laptop into a home server and preventing it from becoming e-waste.
 tags:
+  - homelab
   - linux
 ---
 
@@ -81,6 +82,6 @@ Reading into this more, it seems rare, but it is a real possibility with lithium
 
 I dug into the Dell UEFI, and under the "battery" settings, I saw the options for capping the charge limit. However, before I configured anything, I saw another setting along the lines of "always plugged in AC". There was limited documentation on what this setting did, but it sounded exactly what I wanted. I decided to enable this instead of capping the charge limit.
 
-## Closing Thoughts
+## Closing thoughts
 
 Turning my old laptop into a home server was a fun little weekend project. With a few tweaks, it is running nice and quietly next to my router. It isn't doing very much right now, but when I get some more time, I plan to configure this laptop to replace a Nextcloud instance I have running in a VPS, which is currently backing up my family's photos, and syncing our contacts and calendars.
