@@ -80,7 +80,7 @@ Inside that file, I added this line (replacing `<THE UUID>` with the actual valu
 data UUID=<THE UUID> none luks
 ```
 
-Finally, I edited `/etc/fstab`:
+Then I edited `/etc/fstab`:
 
 ```bash
 sudo nano /etc/fstab
