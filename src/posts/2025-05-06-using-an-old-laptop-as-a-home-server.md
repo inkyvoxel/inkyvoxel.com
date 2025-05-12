@@ -85,3 +85,5 @@ I dug into the Dell UEFI, and under the "battery" settings, I saw the options fo
 ## Closing thoughts
 
 Turning my old laptop into a home server was a fun little weekend project. With a few tweaks, it is running nice and quietly next to my router. It isn't doing very much right now, but when I get some more time, I plan to configure this laptop to replace a Nextcloud instance I have running in a VPS, which is currently backing up my family's photos, and syncing our contacts and calendars.
+
+Update: It wasn't running as quietly as I liked, but I solved that by replacing one of the hard drives with an SSD. You can read about that [here](/how-to-add-an-ssd-to-your-home-server).

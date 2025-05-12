@@ -6,7 +6,7 @@ tags:
   - linux
 ---
 
-After converting an old laptop into a home server recently, there was one major thing that was bothering me. The laptop originally had two drives: a smaller SSD where Ubuntu Server was installed, and an ageing 1TB 2.5" HDD that was not only slow, but it was also incredibly loud. I could hear it scratching away in the background, which was not ideal.
+After converting an old laptop into a home server [recently](/using-an-old-laptop-as-a-home-server), there was one major thing that was bothering me. The laptop originally had two drives: a smaller SSD where Ubuntu Server was installed, and an ageing 1TB 2.5" HDD that was not only slow, but it was also incredibly loud. I could hear it scratching away in the background, which was not ideal.
 
 To keep the setup quiet and snappy, I picked up a new 4TB 2.5" SSD to replace the old hard drive. For a home server that will be on 24/7, it felt like a worthwhile investment. The new SSD has more storage space, has less noise, less heat, lower power draw and (I hope) better reliability.
 
