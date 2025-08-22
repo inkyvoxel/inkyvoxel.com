@@ -40,11 +40,19 @@
         max-width: 960px;
       }
 
+      header {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        padding-top: 1.5rem;
+      }
+
       header nav ul {
+        display: flex;
+        gap: 1rem;
         list-style-type: none;
         margin: 0;
         padding: 0;
-        overflow: hidden;
       }
 
       footer {
@@ -52,13 +60,15 @@
       }
 
       header nav li {
-        float: left;
-        display: block;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
         text-align: center;
         padding-top: 14px;
         padding-right: 16px;
         padding-bottom: 14px;
         padding-left: 0;
+        padding: 0;
       }
 
       code,
@@ -114,12 +124,58 @@
           background-color: #b19af4;
         }
       }
+
+      .voxel {
+        margin-right: 1rem;
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        perspective: 600px;
+        vertical-align: middle;
+      }
+
+      .voxel .face {
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1em;
+        backface-visibility: hidden;
+      }
+
+      .voxel {
+        position: relative;
+        transform-style: preserve-3d;
+        animation: spin-cube 2s linear infinite;
+      }
+      
+      .voxel .front  { transform: rotateY(  0deg) translateZ(0.5em); }
+      .voxel .back   { transform: rotateY(180deg) translateZ(0.5em); }
+      .voxel .right  { transform: rotateY( 90deg) translateZ(0.5em); }
+      .voxel .left   { transform: rotateY(-90deg) translateZ(0.5em); }
+      .voxel .top    { transform: rotateX( 90deg) translateZ(0.5em); }
+      .voxel .bottom { transform: rotateX(-90deg) translateZ(0.5em); }
+
+      @keyframes spin-cube {
+        0%   { transform: rotateX(0deg) rotateY(0deg); }
+        100% { transform: rotateX(360deg) rotateY(360deg); }
+      }
     </style>
     <script defer src="https://umami.inkyvoxel.app/script.js" data-website-id="03e804ae-f9a1-40c5-9e40-a79c43b23c91"></script>
   </head>
 
   <body>
     <header>
+      <span class="voxel" aria-label="inkyvoxel logo" title="inkyvoxel">
+        <span class="face front">⬛</span>
+        <span class="face back">⬛</span>
+        <span class="face right">⬛</span>
+        <span class="face left">⬛</span>
+        <span class="face top">⬛</span>
+        <span class="face bottom">⬛</span>
+      </span>
       <nav>
         <ul>
           <li><a href="/">HOME</a></li>
