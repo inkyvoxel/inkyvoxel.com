@@ -93,35 +93,45 @@
 
       @media (prefers-color-scheme: dark) {
         body {
-          background-color: black;
-          color: white;
+          background-color: var(--bg-color);
+          color: var(--text-color);
+          --bg-color: black;
+          --text-color: white;
+          --primary-color: #b19af4;
+          --secondary-color: #5e2ee8;
+          --cube-color: var(--primary-color);
         }
 
         a:link,
         a:visited {
-          color: #b19af4;
+          color: var(--primary-color);
         }
 
         code,
         pre code {
-          background-color: #5e2ee8;
+          background-color: var(--secondary-color);
         }
       }
 
       @media (prefers-color-scheme: light) {
         body {
-          background-color: white;
-          color: black;
+          background-color: var(--bg-color);
+          color: var(--text-color);
+          --bg-color: white;
+          --text-color: black;
+          --primary-color: #5e2ee8;
+          --secondary-color: #b19af4;
+          --cube-color: var(--primary-color);
         }
 
         a:link,
         a:visited {
-          color: #5e2ee8;
+          color: var(--primary-color);
         }
 
         code,
         pre code {
-          background-color: #b19af4;
+          background-color: var(--secondary-color);
         }
       }
 
@@ -143,6 +153,7 @@
         justify-content: center;
         font-size: 1em;
         backface-visibility: hidden;
+        background-color: var(--cube-color);
       }
 
       .voxel {
@@ -169,12 +180,12 @@
   <body>
     <header>
       <span class="voxel" aria-label="inkyvoxel logo" title="inkyvoxel">
-        <span class="face front">⬛</span>
-        <span class="face back">⬛</span>
-        <span class="face right">⬛</span>
-        <span class="face left">⬛</span>
-        <span class="face top">⬛</span>
-        <span class="face bottom">⬛</span>
+        <div class="face front"></div>
+        <div class="face back"></div>
+        <div class="face right"></div>
+        <div class="face left"></div>
+        <div class="face top"></div>
+        <div class="face bottom"></div>
       </span>
       <nav>
         <ul>
