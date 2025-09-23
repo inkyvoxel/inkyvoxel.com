@@ -73,7 +73,13 @@ PubkeyAuthentication yes
 PermitRootLogin no
 ```
 
-Restart SSH: `systemctl restart ssh`.
+Note: if you're using [Coolify](https://coolify.io/?ref=inkyvoxel.com), you will need to use `PermitRootLogin without-password` instead of `PermitRootLogin no`, as Coolify doesn't currently support non-root users for managing servers.
+
+After making those changes, restart SSH:
+
+```bash
+systemctl restart ssh
+```
 
 Test key login as new user before closing root session!
 
@@ -81,9 +87,9 @@ Test key login as new user before closing root session!
 
 For most web servers, you only want to allow traffic for HTTP (80), HTTPS (443), and SSH (22). Deny other ports by default.
 
-If your VPS provider has a firewall service (e.g. [Hetzner](https://docs.hetzner.com/cloud/firewalls/getting-started/creating-a-firewall/)), you can configure it outside your server.
+If your VPS provider has a firewall service (e.g. [Hetzner](https://docs.hetzner.com/cloud/firewalls/getting-started/creating-a-firewall/?ref=inkyvoxel.com)), you can configure it outside your server.
 
-You can also configure using Uncomplicated Firewall (UFW) on the server itself.
+If the provider doesn't have a firewall service, you can also configure one using Uncomplicated Firewall (UFW) on the server itself.
 
 ```bash
 apt install ufw -y
@@ -96,7 +102,7 @@ ufw enable
 ufw status verbose
 ```
 
-You may need to open additional ports for your specific services (e.g., 25 for mail, 3306 for MySQL, 5432 for PostgreSQL). Always follow the principle of least privilege—only open what you need.
+You may need to open additional ports for your specific services (e.g., 25 for mail, 3306 for MySQL, 5432 for PostgreSQL). Always follow the principle of least privilege by only opening what you need.
 
 ## Install and configure Fail2Ban
 
