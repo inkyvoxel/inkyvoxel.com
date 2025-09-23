@@ -19,6 +19,10 @@ export default async function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj).toISO();
   });
 
+  eleventyConfig.addFilter("keys", (obj) => {
+    return Object.keys(obj);
+  });
+
   eleventyConfig.addPassthroughCopy({ "./src/robots.txt": "/robots.txt" });
 
   const siteData = await loadSiteData();

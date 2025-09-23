@@ -4,11 +4,13 @@ title: Tags
 description: A list of tags used to categorise posts.
 ---
 <p>Use the links below to filter posts by their tags.</p>
+{% assign sorted_tags = collections | keys | sort %}
 <ul>
-  {% for tag in collections %}
-    {% unless tag[0] == 'all' or tag[0] == 'post' %}
+  {% for tag in sorted_tags %}
+    {% unless tag == 'all' or tag == 'post' %}
+      {% assign posts = collections[tag] %}
       <li>
-        <a href="/tags/{{ tag[0] }}">{{ tag[0] | replace: '-', ' ' }}</a> ({{ tag[1].length }})
+        <a href="/tags/{{ tag }}">{{ tag | replace: '-', ' ' }}</a> ({{ posts.length }})
       </li>
     {% endunless %}
   {% endfor %}
