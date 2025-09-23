@@ -18,8 +18,6 @@
     <link rel="alternate" type="application/atom+xml" title="Feed" href="/feed.atom">
     <style>
       body {
-        --primary-color: #5e2ee8;
-        --secondary-color: #b19af4;
         font-family: monospace;
         font-size: 1rem;
         margin: 0;
@@ -35,7 +33,6 @@
 
       a {
         color: var(--primary-color);
-        font-weight: bold;
       }
 
       hr {
@@ -109,23 +106,34 @@
 
       @media (prefers-color-scheme: dark) {
         body {
+          --primary-color: #b19af4;
+          --secondary-color: #582AE5;
           background-color: black;
           color: white;
+        }
+
+        code {
+          color: black;
         }
       }
 
       @media (prefers-color-scheme: light) {
         body {
+          --primary-color: #582AE5;
+          --secondary-color: #b19af4;
           background-color: white;
           color: black;
+        }
+
+        code {
+          color: white;
         }
       }
 
       code,
       pre code {
         background-color: var(--primary-color);
-        box-shadow: -2px 2px 0 var(--secondary-color);
-        color: white;
+        box-shadow: -3px 3px 0 var(--secondary-color);
       }
 
       .voxel {
