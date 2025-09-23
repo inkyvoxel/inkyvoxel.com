@@ -61,7 +61,7 @@ Replace `id_rsa.pub` with your actual public key filename (e.g., `id_ed25519.pub
 
 ## Disable password authentication and root login for SSH
 
-Enforce key-only access and block `root` user.
+Now you have copied over your SSH key, enforce key-only access and block the `root` user.
 
 Edit `/etc/ssh/sshd_config`:
 
