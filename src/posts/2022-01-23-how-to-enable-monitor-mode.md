@@ -13,7 +13,7 @@ However, not all wireless devices support monitor mode, so you will need to chec
 
 ## Quick guide
 
-If you have [Aircrack-ng](https://aircrack-ng.org/) installed, you can run the following commands in your terminal:
+If you have [Aircrack-ng](https://aircrack-ng.org/?ref=inkyvoxel.com) installed, you can run the following commands in your terminal:
 
 1. Run `airmon-ng` to list all your network interfaces.
 2. Run `arimon-ng check kill` to stop interfering network processes.

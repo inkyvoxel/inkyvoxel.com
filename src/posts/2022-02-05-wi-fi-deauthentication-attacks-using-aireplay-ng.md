@@ -16,7 +16,7 @@ Let's start by describing how to accomplish a Wi-Fi deauthentication attack:
 5. Change the MAC address of your wireless interface to match the target network's access point.
 6. Send a request to target client, requesting them to disconnect from the network.
 
-This process is very cumbersome, but fortunately it can be automated using aireplay-ng, which is part of the [Aircrack-ng](https://aircrack-ng.org/) suite.
+This process is very cumbersome, but fortunately it can be automated using aireplay-ng, which is part of the [Aircrack-ng](https://aircrack-ng.org/?ref=inkyvoxel.com) suite.
 
 ## Quick guide
 

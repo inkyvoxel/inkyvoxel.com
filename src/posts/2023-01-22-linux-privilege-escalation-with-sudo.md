@@ -23,7 +23,7 @@ User website may run the following commands on website-hosting-server:
     (ALL) NOPASSWD: /usr/bin/ruby
 ```
 
-In this example, `ruby` has been configured to run using `sudo` for the `website` user. Now that we have this information, we can find a way to exploit it. [GTFOBins](https://gtfobins.github.io/) is a great resource for finding such exploits.
+In this example, `ruby` has been configured to run using `sudo` for the `website` user. Now that we have this information, we can find a way to exploit it. [GTFOBins](https://gtfobins.github.io/?ref=inkyvoxel.com) is a great resource for finding such exploits.
 
 Searching GTFOBins for `ruby`, and filtering by `sudo`, gives us the following command:
 

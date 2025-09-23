@@ -5,7 +5,7 @@ tags:
   - cybersecurity
 ---
 
-Airodump-ng installs as part of the [Aircrack-ng](https://aircrack-ng.org/) suite, which is a collection of tools to assess Wi-Fi network security.
+Airodump-ng installs as part of the [Aircrack-ng](https://aircrack-ng.org/?ref=inkyvoxel.com) suite, which is a collection of tools to assess Wi-Fi network security.
 
 Before you can begin using airodump-ng, you will need to enable "Monitor" mode on your wireless interface. I previously wrote a guide on [how to enable monitor mode on your wireless interface](/how-to-enable-monitor-mode).
 
@@ -75,8 +75,8 @@ For example, running `airodump-ng wlan0 --write test` will create the following 
 
 Running `airodump-ng wlan0 --write test` a second time (using the same prefix) will create files prefixed with `test-02`.
 
-The `.cap` file can be opened using [Wireshark](https://www.wireshark.org/), however all the packet data will be encrypted. I plan to write about how to decrypt this data in a future article!
+The `.cap` file can be opened using [Wireshark](https://www.wireshark.org/?ref=inkyvoxel.com), however all the packet data will be encrypted. I plan to write about how to decrypt this data in a future article!
 
 ## Closing thoughts
 
-This was a brief introduction to sniffing packets using airodump-ng. The tool can do so much more, so I highly recommend reading the man-pages (running `man airodump-ng` in your terminal), or reading the [online documentation](https://aircrack-ng.org/doku.php?id=airodump-ng).
+This was a brief introduction to sniffing packets using airodump-ng. The tool can do so much more, so I highly recommend reading the man-pages (running `man airodump-ng` in your terminal), or reading the [online documentation](https://aircrack-ng.org/doku.php?id=airodump-ng&ref=inkyvoxel.com).

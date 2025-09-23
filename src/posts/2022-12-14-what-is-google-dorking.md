@@ -21,8 +21,8 @@ You can also combine these operators together to make your search more specific.
 
 There are many resources that provide a list of operators that can be used for Google dorking. Some great resources include:
 
-- A list of Google search operators on the Google website: [https://support.google.com/websearch/answer/2466433?hl=en](https://support.google.com/websearch/answer/2466433?hl=en)
-- The Google Hacking Database (GHDB), which has examples of advanced Google dorks, maintained by Offensive Security: [https://www.exploit-db.com/google-hacking-database](https://www.exploit-db.com/google-hacking-database)
+- A list of Google search operators on the Google website: [https://support.google.com/websearch/answer/2466433?hl=en](https://support.google.com/websearch/answer/2466433?hl=en&ref=inkyvoxel.com)
+- The Google Hacking Database (GHDB), which has examples of advanced Google dorks, maintained by Offensive Security: [https://www.exploit-db.com/google-hacking-database](https://www.exploit-db.com/google-hacking-database/?ref=inkyvoxel.com)
 
 ## Closing thoughts
 
