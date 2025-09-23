@@ -20,7 +20,7 @@ dpkg-reconfigure --priority=low unattended-upgrades
 systemctl enable unattended-upgrades
 ```
 
-This won't reboot your server. You'll need to occasionally SSH on and reboot it to apply the latest kernel updates.
+This won't reboot your server. You'll need to occasionally SSH on and reboot it to apply the latest kernel updates. I wrote a previous post explaining [how to safely reboot a Linux server](/how-to-reboot-a-linux-server).
 
 ## Create a non-root user with sudo privileges
 
@@ -113,3 +113,5 @@ By default it bans after 5 failures in 10 min for 10 min. Edit `/etc/fail2ban/ja
 These steps establish a baseline security posture for Ubuntu Server. It is only a starting point, and not a complete security solution. It should be enough to stop your hobby projects from getting pwned.
 
 Regular security audits, log monitoring, and staying informed about vulnerabilities remain essential for maintaining server security.
+
+If you're looking for a server provider, consider signing up to Hetzner (they're great) via my [referral link](https://hetzner.cloud/?ref=zQMVsmYxZm7B). You'll receive €20 in credit, and I'll get €10 as a referral bonus.
