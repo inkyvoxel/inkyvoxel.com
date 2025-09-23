@@ -70,10 +70,6 @@
         align-items: center;
         gap: 1rem;
         text-align: center;
-        padding-top: 14px;
-        padding-right: 16px;
-        padding-bottom: 14px;
-        padding-left: 0;
         padding: 0;
       }
 
@@ -81,18 +77,17 @@
       pre code {
         padding: 2px 5px;
         border-radius: 5px;
+        overflow-x: auto;
       }
 
       pre code {
         display: block;
-        overflow-x: auto;
       }
 
       code:not(pre code) {
         display: inline-block;
         vertical-align: bottom;
         white-space: normal;
-        overflow-x: auto;
       }
 
       h1 {
@@ -158,6 +153,9 @@
         height: 1em;
         perspective: 600px;
         vertical-align: middle;
+        position: relative;
+        transform-style: preserve-3d;
+        animation: spin-cube 2s linear infinite;
       }
 
       .voxel .face {
@@ -170,12 +168,6 @@
         font-size: 1em;
         backface-visibility: hidden;
         background-color: var(--cube-color);
-      }
-
-      .voxel {
-        position: relative;
-        transform-style: preserve-3d;
-        animation: spin-cube 2s linear infinite;
       }
       
       .voxel .front  { transform: rotateY(  0deg) translateZ(0.5em); }
