@@ -9,6 +9,8 @@ tags:
 
 A fresh Ubuntu Server installation is vulnerable to attacks. This guide covers the essential security measures you should implement immediately after deployment to protect your server from common threats.
 
+When you are ready to begin, SSH to your server using the `root` account.
+
 ## Update the system and enable automatic security patches
 
 Regular updates patch vulnerabilities, so set up automated updates:
@@ -106,7 +108,7 @@ systemctl enable fail2ban
 systemctl start fail2ban
 ```
 
-By default it bans after 5 failures in 10 min for 10 min. Edit `/etc/fail2ban/jail.local` to customise this.
+By default, it bans after 5 failures within 10 minutes for 10 minutes. To customise, create `/etc/fail2ban/jail.local` (which overrides `/etc/fail2ban/jail.conf`) and add your settings there.
 
 ## Closing thoughts
 
