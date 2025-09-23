@@ -9,6 +9,14 @@ tags:
 
 A fresh Ubuntu Server installation is vulnerable to attacks. This guide covers the essential security measures you should implement immediately after deployment to protect your server from common threats.
 
+This guide will help you:
+
+- Enable automated updates
+- Create a non-root user
+- Configure SSH keys and disable password logins
+- Configure a firewall
+- Configure Fail2Ban to protect your server from brute-force login attempts
+
 When you are ready to begin, SSH to your server using the `root` account.
 
 ## Update the system and enable automatic security patches
