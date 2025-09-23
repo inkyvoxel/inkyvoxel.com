@@ -16,7 +16,7 @@ When you are ready to begin, SSH to your server using the `root` account.
 Regular updates patch vulnerabilities, so set up automated updates:
 
 ```bash
-apt update && apt upgrade -y
+sudo apt update && sudo apt upgrade -y
 apt install unattended-upgrades
 dpkg-reconfigure --priority=low unattended-upgrades
 systemctl enable unattended-upgrades
@@ -26,7 +26,7 @@ This won't reboot your server. You'll need to occasionally SSH on and reboot it 
 
 ## Create a non-root user with sudo privileges
 
-Avoid using the root account for daily tasks.
+Avoid using the root account for daily tasks. Create a new user with sudo privileges:
 
 ```bash
 adduser username  # Replace 'username' and follow prompts to set password
@@ -36,6 +36,8 @@ usermod -aG sudo username
 You can test this by running `su - username` then `sudo whoami`.
 
 ## Set up SSH key authentication
+
+Now you need to set up SSH key authentication for your new user.
 
 ### Using new SSH key
 
@@ -65,7 +67,9 @@ Replace `id_rsa.pub` with your actual public key filename (e.g., `id_ed25519.pub
 
 Now you have copied over your SSH key, enforce key-only access and block the `root` user.
 
-Edit `/etc/ssh/sshd_config`:
+⚠️ Make sure you test SSH login as the new user before proceeding, as you could lock yourself out of the server!
+
+Edit `/etc/ssh/sshd_config` and set the following:
 
 ```bash
 PasswordAuthentication no
@@ -73,15 +77,13 @@ PubkeyAuthentication yes
 PermitRootLogin no
 ```
 
-Note: if you're using [Coolify](https://coolify.io/?ref=inkyvoxel.com), you will need to use `PermitRootLogin without-password` instead of `PermitRootLogin no`, as Coolify doesn't currently support non-root users for managing servers.
-
 After making those changes, restart SSH:
 
 ```bash
 systemctl restart ssh
 ```
 
-Test key login as new user before closing root session!
+Note: If you're using [Coolify](https://coolify.io/?ref=inkyvoxel.com), you will need to use `PermitRootLogin without-password` instead of `PermitRootLogin no`, as Coolify doesn't currently support non-root users for managing servers.
 
 ## Configure a firewall
 
@@ -92,7 +94,7 @@ If your VPS provider has a firewall service (e.g. [Hetzner](https://docs.hetzner
 If the provider doesn't have a firewall service, you can also configure one using Uncomplicated Firewall (UFW) on the server itself.
 
 ```bash
-apt install ufw -y
+sudo apt install ufw -y
 ufw default deny incoming
 ufw default allow outgoing
 ufw allow 22/tcp  # SSH
@@ -109,7 +111,7 @@ You may need to open additional ports for your specific services (e.g., 25 for m
 Fail2Ban bans IPs after failed login attempts.
 
 ```bash
-apt install fail2ban -y
+sudo apt install fail2ban -y
 systemctl enable fail2ban
 systemctl start fail2ban
 ```
