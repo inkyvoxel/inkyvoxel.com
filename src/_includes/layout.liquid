@@ -9,8 +9,8 @@
     <meta name="description" content="{{ description }}">
     <meta property="og:title" content="{{ title }}">
     <meta property="og:description" content="{{ description }}">
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="black" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="black">
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⬛</text></svg>"
@@ -108,7 +108,7 @@
       @media (prefers-color-scheme: dark) {
         body {
           --primary-color: #b19af4;
-          --secondary-color: #582AE5;
+          --secondary-color: #582ae5;
           background-color: black;
           color: white;
         }
@@ -120,7 +120,7 @@
 
       @media (prefers-color-scheme: light) {
         body {
-          --primary-color: #582AE5;
+          --primary-color: #582ae5;
           --secondary-color: #b19af4;
           background-color: white;
           color: black;
@@ -160,20 +160,40 @@
         backface-visibility: hidden;
         background-color: var(--primary-color);
       }
-      
-      .voxel .front  { transform: rotateY(  0deg) translateZ(0.5em); }
-      .voxel .back   { transform: rotateY(180deg) translateZ(0.5em); }
-      .voxel .right  { transform: rotateY( 90deg) translateZ(0.5em); }
-      .voxel .left   { transform: rotateY(-90deg) translateZ(0.5em); }
-      .voxel .top    { transform: rotateX( 90deg) translateZ(0.5em); }
-      .voxel .bottom { transform: rotateX(-90deg) translateZ(0.5em); }
+
+      .voxel .front {
+        transform: rotateY(0deg) translateZ(0.5em);
+      }
+      .voxel .back {
+        transform: rotateY(180deg) translateZ(0.5em);
+      }
+      .voxel .right {
+        transform: rotateY(90deg) translateZ(0.5em);
+      }
+      .voxel .left {
+        transform: rotateY(-90deg) translateZ(0.5em);
+      }
+      .voxel .top {
+        transform: rotateX(90deg) translateZ(0.5em);
+      }
+      .voxel .bottom {
+        transform: rotateX(-90deg) translateZ(0.5em);
+      }
 
       @keyframes spin-cube {
-        0%   { transform: rotateX(0deg) rotateY(0deg); }
-        100% { transform: rotateX(360deg) rotateY(360deg); }
+        0% {
+          transform: rotateX(0deg) rotateY(0deg);
+        }
+        100% {
+          transform: rotateX(360deg) rotateY(360deg);
+        }
       }
     </style>
-    <script defer src="https://umami.inkyvoxel.app/script.js" data-website-id="03e804ae-f9a1-40c5-9e40-a79c43b23c91"></script>
+    <script
+      defer
+      src="https://umami.inkyvoxel.app/script.js"
+      data-website-id="03e804ae-f9a1-40c5-9e40-a79c43b23c91"
+    ></script>
   </head>
 
   <body>
