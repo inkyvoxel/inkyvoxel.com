@@ -2,6 +2,7 @@
 title: Protecting your server with Cloudflare
 description: A guide to securing your VPS by proxying it through Cloudflare for DDoS protection, SSL, and performance benefits.
 tags:
+  - self-hosting
   - cybersecurity
 ---
 

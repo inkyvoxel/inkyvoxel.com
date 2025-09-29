@@ -2,7 +2,7 @@
 title: How to add an SSD to your home server
 description: How I added an encrypted SSD to my home server. Step-by-step installation and setup.
 tags:
-  - homelab
+  - self-hosting
   - linux
 ---
 

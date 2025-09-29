@@ -2,7 +2,7 @@
 title: Using an old laptop as a home server
 description: Turning an old laptop into a home server and preventing it from becoming e-waste.
 tags:
-  - homelab
+  - self-hosting
   - linux
 ---
 

@@ -3,8 +3,9 @@ title: How to secure Ubuntu Server
 description: Learn essential Ubuntu Server security best practices including SSH hardening, firewall configuration, automated updates, and Fail2Ban setup. Step-by-step guide to protect your Linux server from security threats.
 
 tags:
-  - linux
+  - self-hosting
   - cybersecurity
+  - linux
 ---
 
 A fresh Ubuntu Server installation is vulnerable to attacks. This guide covers the essential security measures you should implement immediately after deployment to protect your server from common threats.
