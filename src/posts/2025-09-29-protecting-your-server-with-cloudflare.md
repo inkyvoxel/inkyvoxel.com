@@ -22,13 +22,13 @@ Cloudflare acts as a reverse proxy between your VPS and the internet, providing 
 
 1. **Sign up for Cloudflare**: If you don't have an account, create one at [cloudflare.com](https://cloudflare.com/?ref=inkyvoxel.com).
 
-2. **Add your domain**: In the Cloudflare dashboard, under 'Account home', click "Onboard a domain". Enter your domain name and follow Cloudflare's instructions.
+2. **Add your domain**: In the Cloudflare dashboard, under 'Account home', click 'Onboard a domain'. Enter your domain name and follow Cloudflare's instructions.
 
 3. **Update nameservers**: Cloudflare will provide two nameservers. Update your domain registrar's settings to point to these nameservers. This may take up to 24 hours to propagate.
 
-4. **Configure DNS**: Once your domain is active on Cloudflare, go to the DNS settings. Add an `A` record for your domain (e.g. `@` or `www`) pointing to your VPS's IP address. Ensure the "Proxy status" is set to "Proxied" (the cloud icon should be orange).
+4. **Configure DNS**: Once your domain is active on Cloudflare, go to the DNS settings. Add an `A` record for your domain (e.g. `@` or `www`) pointing to your VPS's IP address. Ensure the 'Proxy status' is set to 'Proxied' (the cloud icon should be orange).
 
-5. **Enable SSL**: Navigate to SSL/TLS > Overview, and set the encryption mode to "Full (strict)" or "Full" to ensure end-to-end encryption. Cloudflare will issue a free SSL certificate.
+5. **Enable SSL**: Navigate to SSL/TLS > Overview, and set the encryption mode to 'Full (strict)' or 'Full' to ensure end-to-end encryption. Cloudflare will issue a free SSL certificate.
 
 6. **Test your setup**: Visit your domain to ensure it's loading through Cloudflare. Check the headers for `CF-RAY` to confirm traffic is being proxied. `CF-CACHE-STATUS` will indicate the caching status.
 

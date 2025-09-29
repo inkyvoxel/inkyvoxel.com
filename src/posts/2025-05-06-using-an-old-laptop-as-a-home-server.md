@@ -80,7 +80,7 @@ While researching setting up a laptop as a server, I saw a few comments online s
 
 Reading into this more, it seems rare, but it is a real possibility with lithium batteries. I read the safest option is to remove the battery entirely. Another option I saw was to cap the battery charge limit to around 60% in UEFI. As a disclaimer, I don't know if capping the charge limit prevents the fire risk, or if this is just simply better for overall battery health. I personally decided to leave the battery in, so I guess I will soon find out.
 
-I dug into the Dell UEFI, and under the "battery" settings, I saw the options for capping the charge limit. However, before I configured anything, I saw another setting along the lines of "always plugged in AC". There was limited documentation on what this setting did, but it sounded exactly what I wanted. I decided to enable this instead of capping the charge limit.
+I dug into the Dell UEFI, and under the 'battery' settings, I saw the options for capping the charge limit. However, before I configured anything, I saw another setting along the lines of 'always plugged in AC'. There was limited documentation on what this setting did, but it sounded exactly what I wanted. I decided to enable this instead of capping the charge limit.
 
 ## Closing thoughts
 

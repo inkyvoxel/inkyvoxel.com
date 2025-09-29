@@ -7,7 +7,7 @@ tags:
 
 A MAC address is a twelve digit hexadecimal number that is most commonly displayed with a colon separating every two digits, e.g. `44:87:ab:91:11:ba`.
 
-MAC stands for "Media Access Control". A MAC address is a physical identifier assigned to a network interface by the device's manufacturer.
+MAC stands for 'Media Access Control'. A MAC address is a physical identifier assigned to a network interface by the device's manufacturer.
 
 All network cards, wired or wireless, come with a specific physical MAC address that is unique to that device. This means that no two network interfaces in the world will have the same physical MAC address.
 
@@ -15,7 +15,7 @@ Physical MAC addresses are permanently assigned. If you disconnected your networ
 
 ## What are MAC addresses used for?
 
-MAC addresses are used within networks to identify different devices. When devices are communicating over the network, they send packets containing a "Source MAC" and a "Destination MAC".
+MAC addresses are used within networks to identify different devices. When devices are communicating over the network, they send packets containing a 'Source MAC' and a 'Destination MAC'.
 
 Network administrators can use MAC addresses to filter devices connecting to their network, by either allowing or blocking specific MAC addresses.
 
@@ -23,7 +23,7 @@ Network administrators can use MAC addresses to filter devices connecting to the
 
 On Linux, you can find your MAC address using `ifconfig` in your terminal.
 
-Running `ifconfig` will print out information about your network interfaces. We are most interested in the lines starting with `ether`, which is the most common "hardware class" of the network interfaces. This is where we can find our MAC address.
+Running `ifconfig` will print out information about your network interfaces. We are most interested in the lines starting with `ether`, which is the most common 'hardware class' of the network interfaces. This is where we can find our MAC address.
 
 ```sh
 eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
@@ -74,8 +74,8 @@ If you wanted to change `wlan0` to use `00:12:34:56:78:90` MAC address, you woul
 Let's break this command down:
 
 - `ifconfig wlan0` to target `wlan0`.
-- `hw` option to edit the "hardware" configuration of the network interface.
-- `ether` to specify the "hardware class" of `wlan0` (you can get the "hardware class of all your network interfaces by running `ifconfig`).
+- `hw` option to edit the 'hardware' configuration of the network interface.
+- `ether` to specify the 'hardware class' of `wlan0` (you can get the 'hardware class of all your network interfaces by running `ifconfig`).
 - `00:12:34:56:78:90` to set the desired MAC address.
 
 Finally, you need to re-enable your network interface. You can do this by running `ifconfig wlan0 up`.

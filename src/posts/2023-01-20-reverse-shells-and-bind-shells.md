@@ -8,9 +8,9 @@ tags:
 
 Reverse shells and bind shells are types of network connections used in hacking and penetration testing.
 
-A reverse shell is when the attacker makes a target computer connect back their own computer, where they can then control the target's shell. To do this, the attacker uses special tools to set up a "listener" on the attacking computer, which waits for the target to connect.
+A reverse shell is when the attacker makes a target computer connect back their own computer, where they can then control the target's shell. To do this, the attacker uses special tools to set up a 'listener' on the attacking computer, which waits for the target to connect.
 
-In contrast, a bind shell is when a attacker makes the target computer run a "listener" directly, that allows the attacker to connect and control it.
+In contrast, a bind shell is when a attacker makes the target computer run a 'listener' directly, that allows the attacker to connect and control it.
 
 A reverse or bind shell is usually established after a target computer has been exploited. In this article we will not be discussing how to exploit a target, but we will be covering how to establish a reverse or bind shell using a tool called netcat.
 
