@@ -1,8 +1,7 @@
 ---
 title: Fixing my Bluetooth issues on Linux
 description: Do you sometimes have issues turning Bluetooth on with Ubuntu or Fedora? This might help!
-tags:
-  - linux
+tags: [linux]
 ---
 
 My laptop often has issues turning Bluetooth on after booting up. I have this issue on both Ubuntu 22.04 and Fedora 39. Rebooting sometimes fixes the issue, but not always.

@@ -1,8 +1,7 @@
 ---
 title: How to use Python sets
 description: Python sets are useful for creating collections of unique elements. They support operations such as finding the difference between two sets, joining multiple sets together, and more!
-tags:
-  - software-engineering
+tags: [software-engineering]
 ---
 
 Sets are data structures used for holding unique collections of elements. Meaning, you cannot have duplicate elements in a set.

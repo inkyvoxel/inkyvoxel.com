@@ -1,9 +1,7 @@
 ---
 title: How to stabilise netcat shells using Python
 description: Netcat shells are unstable by default, but they can be improved and stabilised using Python.
-tags:
-  - cybersecurity
-  - linux
+tags: [cybersecurity, linux]
 ---
 
 Netcat is easy to use and widely available on many systems, making it a perfect tool for remote shells. However, netcat shells are very unstable. You are always one `Ctrl + C` away from accidentally losing the connection to your target.

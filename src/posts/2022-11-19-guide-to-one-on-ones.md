@@ -1,8 +1,7 @@
 ---
 title: Guide to one-on-ones
 description: A short guide to one-on-one meetings for leaders.
-tags:
-  - leadership
+tags: [leadership]
 ---
 
 If you are a manager, one of your most important responsibilities is to ensure the people you manage are happy, engaged, and are working as effectively as they can. One of the best ways to achieve this is to have quality one-on-ones with your direct reports. Here are some of my thoughts on how to accomplish that.

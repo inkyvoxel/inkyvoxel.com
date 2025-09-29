@@ -1,9 +1,7 @@
 ---
 title: Using an old laptop as a home server
 description: Turning an old laptop into a home server and preventing it from becoming e-waste.
-tags:
-  - self-hosting
-  - linux
+tags: [self-hosting, linux]
 ---
 
 I used a relatively cheap Dell Inspiron 15 laptop for nearly eight years as my personal computer. It served me well, aside from the occasional driver issues in Linux. Last year I replaced it with a Framework 13 AMD laptop, which was a huge upgrade in every way. Since then, the Dell had been tucked away in a cupboard collecting dust. This weekend I decided to give it a new purpose, by turning it into a home server.

@@ -1,8 +1,7 @@
 ---
 title: What is Google dorking?
 description: Find out what Google dorking is, and how you can use it to find hidden content on the internet.
-tags:
-  - cybersecurity
+tags: [cybersecurity]
 ---
 
 Google dorking, also known as Google hacking, is the practice of using advanced search operators to find information that is not readily available on the internet. This is specific to Google search, hence the name, but other search engines may provide similar functionality.

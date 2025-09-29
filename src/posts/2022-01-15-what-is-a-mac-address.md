@@ -1,8 +1,7 @@
 ---
 title: What is a MAC Address?
 description: You've probably heard the term 'MAC address' used a lot, but what is it, and what is it used for?
-tags:
-  - cybersecurity
+tags: [cybersecurity]
 ---
 
 A MAC address is a twelve digit hexadecimal number that is most commonly displayed with a colon separating every two digits, e.g. `44:87:ab:91:11:ba`.

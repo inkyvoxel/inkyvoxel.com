@@ -1,8 +1,7 @@
 ---
 title: How to enable monitor mode on your wireless interface
 description: If you want to be able to capture all packets within the range of your wireless device, you need to enable 'Monitor' mode. Here's a quick guide on how to do that.
-tags:
-  - cybersecurity
+tags: [cybersecurity]
 ---
 
 By default, your wireless interfaces are set to 'Managed' mode. A wireless interface set to 'Managed' mode can only capture packets with a 'Destination MAC' set to its own MAC address.

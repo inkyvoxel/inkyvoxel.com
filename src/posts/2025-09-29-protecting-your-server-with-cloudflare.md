@@ -1,9 +1,7 @@
 ---
 title: Protecting your server with Cloudflare
 description: A guide to securing your VPS by proxying it through Cloudflare for DDoS protection, SSL, and performance benefits.
-tags:
-  - self-hosting
-  - cybersecurity
+tags: [self-hosting, cybersecurity]
 ---
 
 Running a VPS on the internet leaves your server vulnerable to threats such as DDoS attacks. This guide will explain how Cloudflare can be used to proxy traffic to your server, concealing its IP address and adding a vital layer of security. Best of all, this can be achieved using Cloudflare’s generous free tier.

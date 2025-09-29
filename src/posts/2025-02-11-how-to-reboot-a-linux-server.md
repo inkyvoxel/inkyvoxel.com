@@ -1,8 +1,7 @@
 ---
 title: How to reboot a Linux server
 description: A quick guide on how to safely reboot your Linux server.
-tags:
-  - linux
+tags: [linux]
 ---
 
 To safely reboot your Linux server, run the following command:
