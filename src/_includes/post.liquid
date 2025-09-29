@@ -1,8 +1,24 @@
 ---
 layout: layout.liquid
+type: article
 ---
 <section>
   <article>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "{{ title }}",
+        "description": "{{ description }}",
+        "author": {
+          "@type": "Person",
+          "name": "Mark Brady"
+        },
+        "datePublished": "{{ page.date | isoDate }}",
+        "url": "{{ site.url }}{{ page.url }}"
+      }
+    </script>
+
     <h1>{{ title }}</h1>
     <p class="date">
       Published on <time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time>
