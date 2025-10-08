@@ -12,13 +12,13 @@ CloudEvents is a CNCF (Cloud Native Computing Foundation) specification that pro
 
 ## Benefits over Azure Event Grid Schema
 
-**Vendor Neutrality**: CloudEvents is an open standard supported across multiple cloud providers (AWS, Google Cloud, Azure). This makes it easier to migrate or integrate systems across different platforms without rewriting event handling logic.
+**Vendor neutrality**: CloudEvents is an open standard supported across multiple cloud providers (AWS, Google Cloud, Azure). This makes it easier to migrate or integrate systems across different platforms without rewriting event handling logic.
 
-**Industry Adoption**: As a CNCF specification, CloudEvents has broad industry support and tooling. Libraries and frameworks that support CloudEvents will work with your Azure Event Grid events out of the box.
+**Industry adoption**: As a CNCF specification, CloudEvents has broad industry support and tooling. Libraries and frameworks that support CloudEvents will work with your Azure Event Grid events out of the box.
 
 **Extensibility**: CloudEvents is designed with extension attributes, making it straightforward to add custom metadata while maintaining schema compatibility.
 
-**Future-Proofing**: Adopting an open standard reduces lock-in and ensures your event architecture remains portable as requirements evolve.
+**Future-proofing**: Adopting an open standard reduces lock-in and ensures your event architecture remains portable as requirements evolve.
 
 ## CloudEvents example
 
@@ -59,7 +59,7 @@ Here's the equivalent event using the Azure Event Grid schema:
 }
 ```
 
-The Azure Event Grid schema includes Azure-specific fields like `topic`, `dataVersion`, and `metadataVersion`.
+The Azure Event Grid schema includes Azure-specific fields like `metadataVersion`, `dataVersion`, and `topic`.
 
 The Azure Event Grid schema requires more Azure infrastructure context (such as subscription ID, resource group, and topic name), making it less portable across platforms.
 
