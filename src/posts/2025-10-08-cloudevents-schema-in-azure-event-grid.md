@@ -1,6 +1,6 @@
 ---
 title: CloudEvents Schema in Azure Event Grid
-description: An overview of the CloudEvents schema in Azure Event Grid, its benefits compared to the default schema, and what the JSON structure looks like.
+description: An overview of the CloudEvents schema in Azure Event Grid, its benefits compared to the original Event Grid schema, and what the JSON structure looks like.
 tags: [azure, cloud, software-engineering]
 ---
 
