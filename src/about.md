@@ -10,7 +10,7 @@ I've been building web applications for over 15 years, mostly with .NET in large
 
 I have lots of experience using cloud platforms like Azure and AWS, and I’ve been building infrastructure as code with tools like Terraform for nearly a decade. If something can be automated, I’ll probably write a script for it.
 
-Linux is my daily driver, and I often self-host apps on virtual private servers (and even [old laptops](/using-an-old-laptop-as-a-home-server)).
+Linux is my daily driver, and I love the challenge of self-hosting apps on virtual private servers (and even [old laptops](/using-an-old-laptop-as-a-home-server)).
 
 Security is another one of my interests. I enjoy finding, exploiting, and fixing vulnerabilities in web applications.
 
