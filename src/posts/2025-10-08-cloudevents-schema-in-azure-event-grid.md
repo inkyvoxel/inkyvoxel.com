@@ -101,4 +101,4 @@ Use CloudEvents when you need portability, are building multi-cloud solutions, o
 
 ## Closing thoughts
 
-CloudEvents brings portability to event-driven systems, making it easier to build solutions that can evolve and interoperate across platforms. While Azure’s own Event Grid schema is still supported, adopting CloudEvents is a future-proof choice that aligns with industry standards. If you’re starting a new project or planning for long-term flexibility, CloudEvents is well worth considering.
+CloudEvents brings portability to event-driven systems, making it easier to build solutions that can evolve and interoperate across platforms. While Azure's own Event Grid schema is still supported, adopting CloudEvents is a future-proof choice that aligns with industry standards. If you're starting a new project or planning for long-term flexibility, CloudEvents is well worth considering.
