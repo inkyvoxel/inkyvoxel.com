@@ -14,6 +14,8 @@ Linux is my daily driver, and I love the challenge of self-hosting apps on virtu
 
 Security is another one of my interests. I enjoy finding, exploiting, and fixing vulnerabilities in web applications.
 
+I've also made some games, which you can play on [itch.io](https://inkyvoxel.itch.io/).
+
 If you want to chat, you'll find me on [X](https://x.com/inkyvoxel), or you can check out my code on [GitHub](https://github.com/inkyvoxel).
 
 Content and opinions on this website are my own.
