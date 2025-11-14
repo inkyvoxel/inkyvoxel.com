@@ -92,7 +92,6 @@
       code,
       pre code {
         padding: 2px;
-        border-radius: 3px;
         overflow-x: auto;
       }
 
@@ -107,15 +106,26 @@
         margin-top: 5px;
       }
 
-      code {
-        color: var(--dark);
+      .support {
+        text-align: center;
+        margin: 1rem 0;
+        line-height: 0.8;
       }
 
       code,
-      pre code {
+      pre code,
+      .support {
         background-color: #dcdde1;
         border: 2px solid #718093;
         box-shadow: -3px 3px 0 #718093;
+        border-radius: 10px;
+      }
+
+      code,
+      pre code,
+      .support,
+      .support a {
+        color: var(--dark);
       }
 
       h1 {
@@ -123,7 +133,8 @@
       }
 
       .date {
-        font: italic 0.9rem monospace;
+        font-style: italic;
+        font-size: 0.9rem;
       }
 
       @media (prefers-color-scheme: light) {
@@ -184,22 +195,6 @@
         100% {
           transform: rotateX(360deg) rotateY(360deg);
         }
-      }
-
-      .support {
-        text-align: center;
-        margin: 1rem 0;
-        color: var(--light);
-        line-height: 0.8;
-        color: var(--dark);
-        background-color: #dcdde1;
-        border: 2px solid #718093;
-        border-radius: 3px;
-        box-shadow: -3px 3px 0 #718093;
-      }
-
-      .support a {
-        color: var(--dark);
       }
     </style>
     <script
