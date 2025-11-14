@@ -2,51 +2,126 @@
 
 ## Architecture Overview
 
-Eleventy (11ty) static site generator blog with minimalist, monospace design. Source files in `src/`, built to `_site/`. Posts are Markdown with Liquid templating. Site config in `src/_data/site.json`. ES module config in `.eleventy.js` with async site data loading.
+Eleventy (11ty) static site generator blog with minimalist, monospace design. Source files in `src/`, built to `_site/`. Posts are Markdown with Liquid templating. Site config in `src/_data/site.json`. **ES module config** (not CommonJS) in `.eleventy.js` with async site data loading.
 
 ## File Structure & Conventions
 
 - **Posts**: `src/posts/YYYY-MM-DD-title.md` with frontmatter (`title`, `description`, `tags: [cybersecurity, linux]`)
-- **Templates**: Liquid files in `src/_includes/` (e.g., `layout.liquid`, `post.liquid`, `page.liquid`)
-- **Pages**: Root-level `.liquid` or `.md` files in `src/` (e.g., `index.liquid`, `tags.liquid`)
-- **Data**: Site config in `src/_data/site.json`
-- **Build**: ES module config in `.eleventy.js` with async site data loading
+  - Directory-level defaults in `src/posts/posts.json`: `layout: "post.liquid"`, `tags: "post"`, `permalink: "/{{ page.fileSlug }}/"`
+- **Templates**: Liquid files in `src/_includes/` - hierarchy: `layout.liquid` (base) → `post.liquid`/`page.liquid` (content types)
+- **Pages**: Root-level `.liquid` or `.md` files in `src/` (e.g., `index.liquid`, `tags.liquid`, `archives.liquid`)
+- **Data**: Site metadata in `src/_data/site.json` (title, description, url)
+- **Build output**: Static HTML in `_site/` with clean URLs (e.g., `/post-slug/index.html`)
 
-## Key Patterns
+## Key Patterns & Critical "Gotchas"
 
-- **Frontmatter**: Always include `title`, `description`, `tags` array (exclude 'post' tag in loops: `{% unless tag == 'post' %}`)
-- **Date handling**: `{{ page.date | readableDate }}` for display, `{{ page.date | isoDate }}` for datetime attributes
-- **Navigation**: Previous/next links using `{% assign previousPost = collections.post | getPreviousCollectionItem %}`
-- **Tag pages**: Auto-generated via `tag-list.liquid` with pagination (e.g., `/tags/cybersecurity/`) using `{{ tag | slugify }}` permalinks
-- **RSS**: Atom feed via `@11ty/eleventy-plugin-rss` configured in `.eleventy.js`
-- **Collections**: `collections.post` for posts, `collections.all` for sitemap
-- **Pagination**: Used in `index.liquid` for latest posts (`size: 5`, `reverse: true`), `tag-list.liquid` for tag pages
-- **Post lists**: Reversed order (`{% for post in posts reversed %}`) for chronological display
-- **Structured data**: Schema.org JSON-LD in templates for SEO
-- **Analytics**: Umami integration with deferred script loading
+### Post Collections & Tag Filtering
 
-## Language & Conventions
+- **Always exclude 'post' tag** in display loops: `{% unless tag == 'post' %}` (every post has this tag via `posts.json`)
+- **Reverse order for chronological display**: `{% for post in posts reversed %}` (Eleventy defaults to oldest-first)
+- Collections available: `collections.post` (all posts), `collections[tag]` (posts by tag), `collections.all` (sitemap)
 
-- **British English**: Use British English spelling in posts and all user-facing text (e.g., in HTML, titles, descriptions). Examples: "colour" not "color", "centre" not "center", "organise" not "organize".
+### Date Handling
+
+- Display dates: `{{ page.date | readableDate }}` → "03 May, 2025"
+- ISO format: `{{ page.date | isoDate }}` → "2025-05-03T00:00:00.000Z"
+- Luxon custom filters defined in `.eleventy.js`
+
+### Pagination & Tag Pages
+
+- **Homepage**: `index.liquid` paginates `collections.post` (5 per page, reversed)
+- **Tag pages**: `tag-list.liquid` auto-generates `/tags/{tag}/` via pagination over `collections` object
+  - Filters out `all` and `post` from tag list
+  - Uses `eleventyComputed` for dynamic titles: `{{ tag | replace: '-', ' ' | capitalize }}`
+  - Permalinks: `permalink: /tags/{{ tag | slugify }}/`
+
+### Navigation & Schema.org
+
+- **Previous/Next**: `collections.post | getPreviousCollectionItem` / `getNextCollectionItem` (built-in filters)
+- **Structured data**: JSON-LD in `post.liquid` (Article schema) and `index.liquid` (Blog schema)
+
+### RSS Feed
+
+- Atom feed at `/feed.atom` via `@11ty/eleventy-plugin-rss` configured in `.eleventy.js`
+- Pulls site metadata from async-loaded `site.json` (see `loadSiteData()` function)
 
 ## Development Workflow
 
-- **Local dev**: `npx @11ty/eleventy --serve` (watches files, serves localhost)
-- **Build**: `npm run build` or `npx @11ty/eleventy`
-- **New post**: Create `src/posts/YYYY-MM-DD-title.md` with frontmatter
-- **Add filter**: Define in `.eleventy.js` (e.g., `eleventyConfig.addFilter("readableDate", ...)`)
-- **Passthrough assets**: Use `eleventyConfig.addPassthroughCopy()` in `.eleventy.js`
+### Local Development
 
-## Styling & Design
+```bash
+npm install                    # First-time setup
+npx @11ty/eleventy --serve     # Dev server with live reload (localhost:8080)
+npm run build                  # Production build to _site/
+```
 
-- **Layout**: Inline CSS in `layout.liquid`, CSS custom properties for themes (`--primary-color`, `--secondary-color`)
-- **Themes**: Dark/light mode via `@media (prefers-color-scheme)` with color variables
-- **Responsive**: Max-width 960px, 90% width on mobile
-- **Code blocks**: `code` and `pre code` with padding/border-radius, background colors, box-shadow effects
-- **Typography**: Monospace font, 1.6 line-height, 0.02em letter-spacing, optimizeLegibility text-rendering
+### Creating New Posts
 
-## Dependencies
+1. Create `src/posts/YYYY-MM-DD-slug.md`
+2. Add frontmatter:
+   ```yaml
+   ---
+   title: Your Title Here
+   description: Brief description for SEO and previews
+   tags: [software-engineering, cybersecurity]
+   ---
+   ```
+3. Write Markdown content (supports standard GFM)
 
-- `@11ty/eleventy`: Core generator
-- `@11ty/eleventy-plugin-rss`: Feed generation
-- `luxon`: Date formatting via custom filters (readableDate: "dd LLLL, yyyy", isoDate: ISO format)
+### Extending Eleventy
+
+- **Custom filters**: Add in `.eleventy.js` via `eleventyConfig.addFilter("name", fn)`
+- **Passthrough copy**: `eleventyConfig.addPassthroughCopy({ "./src/file": "/output" })`
+- **Example**: `robots.txt` copied from `src/` to `_site/` root
+
+## Styling & Design System
+
+### CSS Architecture
+
+- **All styles inline** in `src/_includes/layout.liquid` `<style>` block (no external CSS files)
+- **CSS custom properties** for theming: `--primary-color`, `--secondary-color`
+- **Responsive**: `max-width: 960px; width: 90%;` for header/main/footer containers
+
+### Dark/Light Mode
+
+```css
+@media (prefers-color-scheme: dark) {
+  body {
+    --primary-color: #b19af4; /* Purple tint */
+    --secondary-color: #582ae5; /* Darker purple */
+    background-color: black;
+  }
+}
+/* Light mode inverts primary/secondary */
+```
+
+### Code Block Styling
+
+- **Box-shadow effect**: `-3px 3px 0 var(--secondary-color)` (retro voxel aesthetic)
+- **Border**: `1px solid var(--secondary-color)`
+- Inline `code`: inverted colors (black on dark mode, white on light)
+
+### Typography
+
+- **Font**: `font-family: monospace` (system default)
+- **Line-height**: `1.6`, **letter-spacing**: `0.02em`
+- **Text rendering**: `optimizeLegibility`
+- Date styling: `.date { font: italic 0.9rem monospace; }`
+
+### Branding Element
+
+- **3D Voxel cube**: CSS-only animation in header (`.voxel` class)
+- `transform-style: preserve-3d` with 6 faces, `spin-cube` animation (360° X/Y rotation)
+
+## Language & Conventions
+
+- **British English**: Use British spelling in posts and all user-facing text (colour, centre, organise, etc.)
+- **No exceptions**: Applies to HTML titles, meta descriptions, post content
+
+## Dependencies & Configuration
+
+- **`@11ty/eleventy` v3.0.0**: Core static site generator
+- **`@11ty/eleventy-plugin-rss` v2.0.2**: Atom feed generation
+- **`luxon`**: DateTime library for custom date filters
+- **`package.json` type**: `"type": "module"` (ES modules, not CommonJS)
+- **`.eleventy.js` exports**: Default async function (for async site data loading)
