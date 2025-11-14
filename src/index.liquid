@@ -1,5 +1,5 @@
 ---
-title: inkyvoxel
+title: ~/
 description: I am a software engineer who writes about various topics including web applications and cybersecurity.
 layout: layout.liquid
 pagination:
@@ -24,8 +24,8 @@ pagination:
   </script>
   <h1>{{ title }}</h1>
   <p>
-    Hello, and welcome to my website! My name is Mark. I write about various <a href="/tags">topics</a>, including
-    software engineering and cybersecurity.
+    Welcome to my website! My name is Mark Brady. I write about various
+    <a href="/tags">topics</a>, including software engineering and cybersecurity.
   </p>
   <p>You can subscribe to future posts using the <a href="/feed.atom">feed</a>.</p>
 </section>
@@ -48,7 +48,7 @@ pagination:
 
   <nav>
     {% if pagination.href.previous %}
-      <a href="{{ pagination.href.previous }}">Newer posts</a>
+      <a href="{{ pagination.href.previous }}">View newer posts</a>
     {% endif %}
 
     {% if pagination.href.previous and pagination.href.next %}
@@ -56,7 +56,7 @@ pagination:
     {% endif %}
 
     {% if pagination.href.next %}
-      <a href="{{ pagination.href.next }}">Older posts</a>
+      <a href="{{ pagination.href.next }}">View older posts</a>
     {% endif %}
   </nav>
 </section>
