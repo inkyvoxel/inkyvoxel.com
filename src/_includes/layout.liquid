@@ -16,8 +16,8 @@
     <meta name="twitter:description" content="{{ description }}">
     <meta name="twitter:site" content="@inkyvoxel">
     <meta name="twitter:creator" content="@inkyvoxel">
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="black">
+    <meta name="theme-color" content="#2f3640">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5f6fa">
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⬛</text></svg>"
@@ -36,10 +36,16 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        --primary: #c6bdff;
+        --dark: #2f3640;
+        --light: #f5f6fa;
+        background-color: var(--dark);
+        color: var(--light);
       }
 
       a {
-        color: var(--primary-color);
+        font-weight: bold;
+        color: var(--primary);
       }
 
       hr {
@@ -101,6 +107,17 @@
         margin-top: 5px;
       }
 
+      code {
+        color: var(--dark);
+      }
+
+      code,
+      pre code {
+        background-color: #dcdde1;
+        border: 2px solid #718093;
+        box-shadow: -3px 3px 0 #718093;
+      }
+
       h1 {
         font-size: 2rem;
       }
@@ -109,37 +126,12 @@
         font: italic 0.9rem monospace;
       }
 
-      @media (prefers-color-scheme: dark) {
-        body {
-          --primary-color: #b19af4;
-          --secondary-color: #582ae5;
-          background-color: black;
-          color: white;
-        }
-
-        code {
-          color: black;
-        }
-      }
-
       @media (prefers-color-scheme: light) {
         body {
-          --primary-color: #582ae5;
-          --secondary-color: #b19af4;
-          background-color: white;
-          color: black;
+          --primary: #4d31d8;
+          background-color: var(--light);
+          color: var(--dark);
         }
-
-        code {
-          color: white;
-        }
-      }
-
-      code,
-      pre code {
-        background-color: var(--primary-color);
-        border: 1px solid var(--secondary-color);
-        box-shadow: -3px 3px 0 var(--secondary-color);
       }
 
       .voxel {
@@ -163,7 +155,7 @@
         justify-content: center;
         font-size: 1em;
         backface-visibility: hidden;
-        background-color: var(--primary-color);
+        background-color: var(--primary);
       }
 
       .voxel .front {
@@ -197,18 +189,17 @@
       .support {
         text-align: center;
         margin: 1rem 0;
-        color: black;
-        background-color: #b7e52a;
-        border: 1px solid #582ae5;
-        border-radius: 3px;
-        box-shadow: -3px 3px 0 #582ae5;
+        color: var(--light);
         line-height: 0.8;
+        color: var(--dark);
+        background-color: #dcdde1;
+        border: 2px solid #718093;
+        border-radius: 3px;
+        box-shadow: -3px 3px 0 #718093;
       }
 
       .support a {
-        color: #582ae5;
-        font-size: 1.2rem;
-        font-weight: bold;
+        color: var(--dark);
       }
     </style>
     <script
@@ -245,7 +236,7 @@
     <footer>
       <div class="support">
         <p>Like what I do?</p>
-        <p><a href="https://ko-fi.com/inkyvoxel" target="_blank" rel="noopener">Support me on Ko-fi</a></p>
+        <p><a href="https://ko-fi.com/inkyvoxel" target="_blank" rel="noopener">Support me on Ko-fi!</a></p>
       </div>
       <p>&copy; 2025 MARK BRADY. ALL RIGHTS RESERVED.</p>
     </footer>
