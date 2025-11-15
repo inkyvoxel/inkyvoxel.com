@@ -1,7 +1,7 @@
 ---
 title: Vibe coding is slop until it's not
 description: AI-assisted coding is a chaotic ride where code feels wrong, until it magically works.
-tags: [software-engineering]
+tags: [software-engineering, ai]
 ---
 
 There's a strange feeling I get when using an LLM to write code. One moment, I am squinting at my screen because it's churned out a messy pile of slop that doesn't work. The next prompt, it's handed me a perfectly fine function that would have taken me 20 minutes to write myself.

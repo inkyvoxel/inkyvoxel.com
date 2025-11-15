@@ -67,38 +67,54 @@ npm run build                  # Production build to _site/
    ---
    ```
 3. Write Markdown content (supports standard GFM)
+4. **Per-post styling**: Add `<style>` tags directly in Markdown for post-specific CSS (e.g., interactive demos)
+   - Style scoped elements with custom classes (`.demo`, `.custom-widget`)
+   - Use CSS variables `var(--primary)`, `var(--light)`, `var(--dark)` for theme consistency
 
 ### Extending Eleventy
 
 - **Custom filters**: Add in `.eleventy.js` via `eleventyConfig.addFilter("name", fn)`
 - **Passthrough copy**: `eleventyConfig.addPassthroughCopy({ "./src/file": "/output" })`
 - **Example**: `robots.txt` copied from `src/` to `_site/` root
+- **Includes pattern**: Reusable components in `src/_includes/` (e.g., `post-list.liquid` for consistent post listings)
+
+### SEO & Analytics
+
+- **Meta tags**: Full Open Graph + Twitter Card setup in `layout.liquid` (uses `{{ type }}` frontmatter for og:type)
+- **Sitemap**: Auto-generated at `/sitemap.xml` from `collections.all` (excludes drafts with `{% if not page.data.draft %}`)
+- **Analytics**: Umami script in layout footer (self-hosted at `umami.inkyvoxel.app`)
+- **Canonical URLs**: `{{ site.url }}{{ page.url }}` pattern for canonical links
 
 ## Styling & Design System
 
 ### CSS Architecture
 
 - **All styles inline** in `src/_includes/layout.liquid` `<style>` block (no external CSS files)
-- **CSS custom properties** for theming: `--primary-color`, `--secondary-color`
+- **CSS custom properties** for theming: `--primary`, `--dark`, `--light` (defined in body, used throughout)
 - **Responsive**: `max-width: 960px; width: 90%;` for header/main/footer containers
+- **Per-post custom CSS**: Posts can include `<style>` blocks for one-off interactive features
 
 ### Dark/Light Mode
 
 ```css
 @media (prefers-color-scheme: dark) {
   body {
-    --primary-color: #b19af4; /* Purple tint */
-    --secondary-color: #582ae5; /* Darker purple */
-    background-color: black;
+    --primary: #c6bdff;
+    background-color: var(--dark);
   }
 }
-/* Light mode inverts primary/secondary */
+@media (prefers-color-scheme: light) {
+  body {
+    --primary: #4d31d8;
+    background-color: var(--light);
+  }
+}
 ```
 
 ### Code Block Styling
 
-- **Box-shadow effect**: `-3px 3px 0 var(--secondary-color)` (retro voxel aesthetic)
-- **Border**: `1px solid var(--secondary-color)`
+- **Box-shadow effect**: `-3px 3px 0 #718093` (retro voxel aesthetic)
+- **Border**: `2px solid #718093`
 - Inline `code`: inverted colors (black on dark mode, white on light)
 
 ### Typography
