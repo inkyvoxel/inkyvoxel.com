@@ -84,8 +84,8 @@ Below is a working demo. Enter some text and a User ID, and it will create a fin
   <h3>Fingerprint Generator</h3>
   <label for="original-text">Enter some original text:</label>
   <textarea id="original-text" rows="4">The quick brown fox jumps over the lazy dog.</textarea>
-  <label for="user-id">User ID (numbers only) between 0 and 65535 that will be used to fingerprint the text:</label>
-  <input type="number" id="user-id" value="1234" min="0" max="65535">
+  <label for="hidden-id">User ID (numbers only) between 0 and 65535 that will be used to fingerprint the text:</label>
+  <input type="number" id="hidden-id" value="1234" min="0" max="65535">
   <button onclick="generateFingerprint()">Generate Fingerprint</button>
   <p id="fingerprint-info"></p>
   <label for="fingerprinted-text">This is the fingerprinted text:</label>
@@ -257,7 +257,7 @@ function extractFingerprint(text) {
 
 function generateFingerprint() {
   const originalText = document.getElementById('original-text').value;
-  const userId = parseInt(document.getElementById('user-id').value);
+  const userId = parseInt(document.getElementById('hidden-id').value);
   
   if (!originalText) {
     alert('Please enter some text');
