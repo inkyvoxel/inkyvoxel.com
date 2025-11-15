@@ -63,7 +63,7 @@ There's a technique called **'zero-width character fingerprinting'** that uses i
 
 ## How it works
 
-Unicode includes several 'zero-width' characters that take up no visual space. They're designed for typography and language support, but they can also be used to hide information. The most common ones are:
+Unicode includes several 'zero-width' characters that take up no visual space. They're designed for typography and language support, but they can also be used to hide information. Some common examples include (though there are others):
 
 - Zero Width Space (`U+200B`)
 - Zero Width Non-Joiner (`U+200C`)
