@@ -1,35 +1,37 @@
 ---
 title: "Setting up Copyparty on a home server"
-description: ...
+description: "A step-by-step guide to setting up Copyparty as a file server on Ubuntu Server, including tips for organising and uploading files."
 tags: [self-hosting, linux]
 ---
 
-Over the past few months I've been tinkering with using an old laptop as a home server running Ubuntu Server.
+Over the past few months, I've been experimenting with turning an old laptop into a home server running Ubuntu Server. This has been a fun project, and I've documented the process in a series of posts.
 
-Previous posts that have led up to this point:
+If you're following along, this post builds on the previous ones, assuming you've already set up your server with things like the `/mnt/data` directory configured.
 
-1. [Using an old laptop as a home server](/using-an-old-laptop-as-a-home-server): Preparing the laptop to run as a home server
-2. [How to add an SSD to your home server](/how-to-add-an-ssd-to-your-home-server): Expanding the space by adding an extra drive
-3. [How to secure Ubuntu Server](/how-to-secure-ubuntu-server): Hardening the server, which can also apply to a VPS running on the internet.
+For reference, here are the earlier posts that led to this point:
 
-These articles describe preparing your laptop to be a home server, adding a bigger SSD, security hardening including a firewall and self updates. If you want to follow along, this article continues from those articles and makes some assumptions such as `/mnt/data` being configured.
+1. [Using an old laptop as a home server](/using-an-old-laptop-as-a-home-server): Getting the laptop ready to act as a server.
+2. [How to add an SSD to your home server](/how-to-add-an-ssd-to-your-home-server): Adding extra storage space.
+3. [How to secure Ubuntu Server](/how-to-secure-ubuntu-server): Hardening the server with a firewall and automatic updates, which also applies to VPS setups.
 
-It took me a while to decide what software to run on this server, but my main goal was to store images, videos and documents for my household, which would replace an instance of Nextcloud I have had running on a Hetzner VPS for a few years.
+My main goal was to create a place to store family photos, videos, and documents, replacing a Nextcloud instance I'd been running on a Hetzner VPS. Nextcloud worked well, but the monthly costs were adding up, to the point where I felt that could have bought a decent home server by now!
 
-Nextcloud on Hetzner VPS has worked fine, but the monthly costs are starting to add up to the point I probably could have bought a premium home server at this point!
+For this goal, I tried various options, including running Nextcloud on the home server, but I settled on a simple setup that feels easy to maintain:
 
-I've played around with various systems, including Nextcloud installed on the home server, and tried using Docker, and some other homelab favourites, but I've found my favourite combo:
+1. [Caddy](https://caddyserver.com/?ref=inkyvoxel.com) as the reverse proxy.
+2. [Copyparty](https://github.com/9001/copyparty) for file hosting.
 
-1. [Caddy](https://caddyserver.com/?ref=inkyvoxel.com) as the reverse proxy
-2. [Copyparty](https://github.com/9001/copyparty) for hosting files
+No Docker involved. I just wanted to run everything as services on Ubuntu. It's straightforward and has been reliable so far.
 
-Not using docker, just running as a service on Ubuntu. It's simple and so far feels easy to maintain.
+I already had a Raspberry Pi running [Pi-hole](https://pi-hole.net/?ref=inkyvoxel.com) for ad blocking on my network. This came in handy for setting up a local DNS record, so I can access Copyparty at `https://copyparty.home` from within my home network.
 
-I have a Raspberry Pi running [Pi-hole](https://pi-hole.net/?ref=inkyvoxel.com) on my network, that I use to block ads. It came in useful for this server, as I could set up a local DNS record in the settings so I can access Copyparty via `https://copyparty.home` on my network.
+(todo: a better transition from the intro to the guide) Below are the steps I took to set up Copyparty on my home server. 
 
-## Set up Caddy:
+## Setting up Caddy
 
-Install from official repo:
+First, I set up Caddy as a reverse proxy to handle requests and SSL certificates.
+
+Install Caddy from the official repository:
 
 ```bash
 sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
@@ -41,7 +43,7 @@ sudo apt update
 sudo apt install caddy
 ```
 
-Create a new Caddyfile with `sudo nano /etc/caddy/Caddyfile`:
+Now, create a new Caddyfile at `/etc/caddy/Caddyfile`:
 
 ```
 copyparty.home {
@@ -50,24 +52,24 @@ copyparty.home {
 }
 ```
 
-Reminder that copyparty.home` was configured in Pi-hole as a local DNS.
+`copyparty.home` is the local DNS record I set up in Pi-hole, and `localhost:3923` is the address and port Copyparty runs on.
 
-Save and exit, then:
+Save the file and restart Caddy:
 
 ```bash
 sudo systemctl restart caddy
 sudo systemctl enable caddy
 ```
 
-## Set up Copyparty
+## Setting up Copyparty
 
-Install pre-requisites recommended by Copyparty, including libraries to preview media files:
+Next, install the prerequisites that Copyparty recommends, including libraries for media previews:
 
 ```bash
 sudo apt install -y ffmpeg python3-pil python3-mutagen python3-argon2
 ```
 
-Install Copyparty (system-wide pattern):
+Install Copyparty using the system-wide approach:
 
 ```bash
 # Download self-extracting script to /usr/local/bin
@@ -84,25 +86,23 @@ sudo chown -R root:copyparty /mnt/data/copyparty
 sudo chmod -R 2775 /mnt/data/copyparty    # leading 2 = setgid bit
 ```
 
-I am going to be making two users called `mark` and `renee` so I made directories for these two users.
+I created directories for two users: `mark` and `renee`. Since I wanted hashed passwords, I needed to generate them in advance.
 
-I am going to enable hashed passwords, so need to generate these passwords in advance. User passwords have to be unique, which is a requirement of Copyparty. I am going to allow users to change their passwords by enabling it in the config.
-
-So first need to generate two different passwords for my two users. I am enabling `usernames` in the config, so we need to provide `username:password` to this command:
+Run this command for each user (replace `username:password` with actual values) to generate the hashed passwords:
 
 ```bash
 sudo -u copyparty python3 /usr/local/bin/copyparty-sfx.py --ah-alg argon2 --ah-gen username:password
 ```
 
-The commands output an argon2 password which begins with `+`. You'll need to put this in the Copyparty config.
+This outputs an argon2 hash starting with `+`, which you'll need to paste in the config file.
 
-Create the runtime config file:
+Create the config file at `/etc/copyparty.conf`:
 
 ```bash
 sudo nano /etc/copyparty.conf
 ```
 
-Paste in config to `/etc/copyparty.conf`:
+Add this configuration:
 
 ```
 [global]
@@ -137,17 +137,17 @@ Paste in config to `/etc/copyparty.conf`:
     A: renee
 ```
 
-There's some quirky behaviour with the Copyparty config, it needs to have double spaces before each comment (`#`), so don't make that mistake!
+Comments need two spaces before the `#`. I was very puzzled by this, so don't make that mistake!
 
-Once users log in, they can change their password in the 'control panel'. Password resets require a user SSH on to the server and reconfiguring in `copyparty.conf`.
+Once logged in, users can change their passwords via the control panel. For resets, you'll need to SSH on to the server and update the config manually.
 
-Create the systemd unit:
+Now, create a systemd service file at `/etc/systemd/system/copyparty.service`:
 
 ```bash
 sudo nano /etc/systemd/system/copyparty.service
 ```
 
-Paste:
+Paste this content:
 
 ```
 [Unit]
@@ -192,13 +192,13 @@ sudo systemctl enable --now copyparty
 sudo systemctl status copyparty
 ```
 
-Whenever you edit the unit file, you need to run: `sudo systemctl daemon-reload && sudo systemctl restart copyparty`.
+If you edit the service file later, remember to run `sudo systemctl daemon-reload && sudo systemctl restart copyparty`.
 
-Visit https://copyparty.home/ to confirm it is working.
+For me, I could now visit `https://copyparty.home` to verify it was all working.
 
 ## Updating Copyparty
 
-Updating is as simple as downloading the latest version and replacing your current script.
+Updates seem straightforward. You just download the latest version of the script and replace the old one.
 
 ```bash
 # Stop the service
@@ -217,7 +217,7 @@ sudo systemctl start copyparty
 sudo systemctl status copyparty
 ```
 
-Visit https://copyparty.home/ to verify the update. If something goes wrong, restore the backup:
+Test at `https://copyparty.home`. If anything goes wrong, restore the backup:
 
 ```bash
 sudo systemctl stop copyparty
@@ -225,7 +225,7 @@ sudo mv /usr/local/bin/copyparty-sfx.py.backup /usr/local/bin/copyparty-sfx.py
 sudo systemctl start copyparty
 ```
 
-Once confirmed working, delete the backup:
+Once it's working, clean up the old script:
 
 ```bash
 sudo rm /usr/local/bin/copyparty-sfx.py.backup
@@ -233,16 +233,13 @@ sudo rm /usr/local/bin/copyparty-sfx.py.backup
 
 ## Uninstalling Copyparty
 
-The great thing about Copyparty is that it doesn't do anything odd with the directories or files. If you're unhappy with it, you can just remove Copyparty scripts, services and users, and the files remain where they are.
+One nice thing about Copyparty is that it doesn't mess with your files or directories. If you decide to remove it, just delete the scripts, services, and system user. The data stays intact.
 
 ## Organising files
 
-Before copying all my files to the home server, I wanted to organise them. I copied all the files I wanted from various devices and USB drives into one directory on my laptop, and used a great tool called [Czkawka](https://github.com/qarmin/czkawka) to detect duplicates and broken files. I removed these and was left with around 47k files.
+Before uploading everything to the server, I spent time organising my files. I gathered photos and videos from various devices and USB drives into one folder on my laptop, then used and amazing tool called [Czkawka](https://github.com/qarmin/czkawka) to find and remove duplicates and broken files. This left me with about 47,000 files.
 
-Then I used a combination of `perl-Image-ExifTool`
-and `exiftool` to move the files into a new structure. The below script prioritises `DateTimeOriginal` and other device meta data and moves the files into a directory called `Sorted` with a `yyyy/mm/dd` structure inside.
-
-I added `-exclude 'Sorted/**'` so the script does not try to re-organise my `Sorted` directory.
+Next, I used [exiftool](https://exiftool.org/) (also amazing) to sort them by dates in the metadata into a `Sorted` directory with a `yyyy/mm/dd` structure inside. The command prioritised sorting by the original dates from the device.
 
 ```bash
 exiftool -r -P -progress \
@@ -255,17 +252,19 @@ exiftool -r -P -progress \
   .
 ```
 
-As part of this I found a useful command for deleting all empty folders inside the current directory:
+Along the way, I found this handy command to remove empty directories:
 
 ```bash
 find . -type d -empty -delete
 ```
 
-I originally moved by file modify date as well, but quickly realised that was inaccurate, because some files were modified years after they were taken, and I had to start the organising process all over again! The command above sorted around 40k files, leaving 7k for me to find a new method of organising.
+I initially tried sorting by modified date as well, but that was unreliable since some files had been edited years after they were created. I had to restart the process a few times due to various teething issues like this! Thankfully I had backups before I started.
 
-I noticed that maybe of the files had dates in the file names, so I wrote a python script to try and extract the dates using regexes and then move the files into my `Sorted/yyyy/mm/dd` directories.
+The `exiftool` command handled about 40,000 files, leaving 7,000 that needed another approach.
 
-Disclaimer: I used AI to help generate most of this script, but I tested it thoroughly for my own use case.
+Many of these had dates in their filenames in a mix of formats, so I wrote a Python script to detect them using regexes and move the files accordingly.
+
+Disclaimer: I used AI to help write most of this script. I tested it thoroughly with my own files, but you should test it yourself before using it to move your files.
 
 ```python
 # Move files from `./Unsorted` into `./Sorted/yyyy/mm/dd` if valid
@@ -433,24 +432,32 @@ if __name__ == "__main__":
     main()
 ```
 
-After running this script, I was left with around 500 files that did not have valid meta data, modified dates or dates in the filename, so I had to go through them all manually! Sometimes I was lucky and 50 or so were from the same event, so I could move them easily. But others I needed to hunt down details in the photos, such as which outfit my daughter was wearing, or going through my calendar to figure out what day I met up with old friends and family, to help match the files up to a date. I am not going to lie, it was painful, but at the same time it was nice to look at so many old photos.
+After running the script, I had about 500 files left without reliable dates in the metadata or filenames. I decided to sort them manually, which was tedious but rewarding.
 
-This whole process took me about 2 weeks to organise my photos.
+The whole organisation process took around two weeks, but it felt worth the effort.
 
-## Copying the files over
+## Copying files to the server
 
-Once the photos were organised and de-duped, it was time to copy them on to the Copyparty server.
+With files organised and duplicates removed, it was time to upload them to Copyparty.
 
-You can use Copyparty's web UI for uploading files. I just dragged and dropped 500GB of files into the UI and watched it upload. It was going around 50 M/s. I just let it do its thing and a few hours later it was finished.
+The simplest way is through the web UI. I dragged and dropped almost 420GB of files, and it uploaded at about 45 MB/s.
 
-A more reliable, faster and recommended way is to use WebDAV and [rclone](https://github.com/rclone/rclone), but I was feeling lazy so I just used the web UI. I also love the quirky styling in Copyparty web UI. Another reason is I want my wife to start using this to backup her files, and I imagine she would prefer the web UI approach.
+For a more reliable and faster method, consider using WebDAV with [rclone](https://github.com/rclone/rclone). I was lazy this time, so I didn't use this approach. I would have looked into this if the browser upload did not work.
+
+## Browse files in the browser
+
+Copyparty has a fun and quirky UI (in my opinion) that allows you to browse images and videos in a gallery. It's not the best I've ever used, but I quite like it!
+
+I can now go to `https://copyparty.home` on my laptop or phone and browse almost 20 years of family memories.
 
 ## What's next?
 
-- Need a backup strategy. I've currently backed up on two spare USB hard drives. I'm currently backing up manually, but would love to automate it in the future.
-- I want to figure out how to backup files directly from iOS to Copyparty. My wife and I currently both use iPhones.
-- I want to replace calendar and contacts I currently have on a Nextcloud instance in a VPS. Need to find software to install on my home server to do this.
+Here are a few items on my to-do list:
+
+- **Backup strategy**: I've manually backed up to two USB drives so far. Automating this would be ideal.
+- **iOS backups**: I need to figure out direct uploads to Copyparty from iPhones for my wife and me.
+- **Replace other Nextcloud features**: Move calendars and contacts from my VPS Nextcloud to the home server.
 
 ## Closing thoughts
 
-...
+Setting up Copyparty has been a great addition to my home server. It's simple, secure, and handles file sharing well. The organisation process was a chore but worthwhile. If you're setting up something similar, I hope this guide helps!
