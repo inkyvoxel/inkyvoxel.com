@@ -14,7 +14,7 @@ For reference, here are the earlier posts that led to this point:
 2. [How to add an SSD to your home server](/how-to-add-an-ssd-to-your-home-server): Adding extra storage space.
 3. [How to secure Ubuntu Server](/how-to-secure-ubuntu-server): Hardening the server with a firewall and automatic updates, which also applies to VPS setups.
 
-My main goal was to create a place to store family photos, videos, and documents, replacing a Nextcloud instance I'd been running on a Hetzner VPS. Nextcloud worked well, but the monthly costs were adding up, to the point where I could have bought a decent home server by now!
+My main goal was to create a place to store family photos, videos, and documents, replacing a Nextcloud instance I'd been running on a Hetzner VPS. Nextcloud has worked well, but the monthly costs were adding up, to the point where I could have bought a decent home server by now!
 
 To achieve this, I tried various options, including running Nextcloud on the home server, but I settled on a simple setup that feels easy to maintain:
 
@@ -22,8 +22,6 @@ To achieve this, I tried various options, including running Nextcloud on the hom
 2. [Copyparty](https://github.com/9001/copyparty) for file hosting.
 
 No Docker involved. I just wanted to run everything as services on Ubuntu. It's straightforward and has been reliable so far.
-
-I already had a Raspberry Pi running [Pi-hole](https://pi-hole.net/?ref=inkyvoxel.com) for ad blocking on my network. This came in handy for setting up a local DNS record, so I can access Copyparty at `https://copyparty.home` from within my home network.
 
 Below are the steps I took to set up Copyparty on my home server. 
 
@@ -52,7 +50,9 @@ copyparty.home {
 }
 ```
 
-`copyparty.home` is the local DNS record I set up in Pi-hole, and `localhost:3923` is the address and port Copyparty runs on.
+I already had a Raspberry Pi running [Pi-hole](https://pi-hole.net/?ref=inkyvoxel.com) for ad blocking on my network. This came in handy for setting up a local DNS record, so I can access Copyparty at `https://copyparty.home` from within my home network.
+
+In the Caddyfile, `copyparty.home` is the local DNS record I set up in Pi-hole, and `localhost:3923` is the address and port Copyparty runs on.
 
 Save the file and restart Caddy:
 
@@ -137,9 +137,9 @@ Add this configuration:
     A: renee
 ```
 
-This config allows anyone on my network to view files, but `mark` and `renee` have to log in for special admin privileges. The config also sets up private directories for my wife and I.
+This config allows anyone on my network to view files, but `mark` and `renee` can log in for special admin privileges. The config also sets up private directories for each user.
 
-Note that comments in this file need two spaces before the `#`. I had errors due to this, so don't make the same mistake!
+Note that comments in this config file need two spaces before the `#`. I had some confusing errors related to this, so don't make the same mistake!
 
 Adding `chpw` to the config means that once logged in, users can change their passwords via the control panel. For password resets, you'll need to SSH on to the server and update the config manually.
 
@@ -260,7 +260,7 @@ exiftool -r -P -progress \
   .
 ```
 
-I initially sorted by modified date as well, but that was unreliable since some files had been edited years after they were created. I had to restart the process a few times due to various teething issues like this! Thankfully I had backups before I started moving files around.
+I initially sorted by modified date as well, but that was unreliable since some files had been edited years after they were created. I had to restart the process a few times due to various goofs like this! Thankfully I had backups before I started moving files around.
 
 The `exiftool` command moved about 40,000 files, leaving 7,000 that needed another approach.
 
@@ -440,9 +440,9 @@ After running the script, I had about 500 files left without reliable dates in t
 
 With files organised and duplicates removed, it was time to upload them to Copyparty.
 
-The simplest way is through the web UI. I dragged and dropped 420GB of files, and it uploaded without errors at about 45 MB/s.
+The simplest way is through the web UI. I dragged and dropped the `yyyy` folders, which was about 420GB of files, and it uploaded without errors at 45 MB/s.
 
-For a more reliable and faster method, consider using WebDAV with [rclone](https://github.com/rclone/rclone). I was lazy this time, so I didn't use this approach. I would have looked into this if the browser upload method failed.
+According to Copyparty's documentation, a faster and more reliable method is using WebDAV and [rclone](https://github.com/rclone/rclone). I was lazy this time, so I didn't use this approach, but I would have looked into this if the browser upload method failed.
 
 ## View files in the browser
 
@@ -456,8 +456,8 @@ Here are a few items on my to-do list:
 
 - **Backup strategy**: I've done manual backups to two USB drives, but automating this would be ideal.
 - **iOS backups**: I need to figure out how to do direct uploads to Copyparty from iPhones for my wife and me.
-- **Automatically organise new files**: I put a lot of effort into organising files. It would be great to automatically organise new files into this structure. I've been wondering if this is something I could set up on the server itself. 🤔
-- **Replace other Nextcloud features**: I would like to move calendars and contacts from my Nextcloud instance to the home server, but I am not sure of the best way to do this yet.
+- **Automatically organise new files**: I put a lot of effort into organising files. It would be great to automatically organise new files into this structure. I've been wondering if this is something I could set up on the server itself (feels risky), or if it is best done on my laptop first. 🤔
+- **Replace other Nextcloud features**: I would like to move calendars and contacts from my Nextcloud instance to the home server, then I can stop paying for the VPS.
 
 ## Closing thoughts
 
