@@ -14,9 +14,9 @@ For reference, here are the earlier posts that led to this point:
 2. [How to add an SSD to your home server](/how-to-add-an-ssd-to-your-home-server): Adding extra storage space.
 3. [How to secure Ubuntu Server](/how-to-secure-ubuntu-server): Hardening the server with a firewall and automatic updates, which also applies to VPS setups.
 
-My main goal was to create a place to store family photos, videos, and documents, replacing a Nextcloud instance I'd been running on a Hetzner VPS. Nextcloud worked well, but the monthly costs were adding up, to the point where I felt that could have bought a decent home server by now!
+My main goal was to create a place to store family photos, videos, and documents, replacing a Nextcloud instance I'd been running on a Hetzner VPS. Nextcloud worked well, but the monthly costs were adding up, to the point where I could have bought a decent home server by now!
 
-For this goal, I tried various options, including running Nextcloud on the home server, but I settled on a simple setup that feels easy to maintain:
+To achieve this, I tried various options, including running Nextcloud on the home server, but I settled on a simple setup that feels easy to maintain:
 
 1. [Caddy](https://caddyserver.com/?ref=inkyvoxel.com) as the reverse proxy.
 2. [Copyparty](https://github.com/9001/copyparty) for file hosting.
@@ -25,7 +25,7 @@ No Docker involved. I just wanted to run everything as services on Ubuntu. It's 
 
 I already had a Raspberry Pi running [Pi-hole](https://pi-hole.net/?ref=inkyvoxel.com) for ad blocking on my network. This came in handy for setting up a local DNS record, so I can access Copyparty at `https://copyparty.home` from within my home network.
 
-(todo: a better transition from the intro to the guide) Below are the steps I took to set up Copyparty on my home server. 
+Below are the steps I took to set up Copyparty on my home server. 
 
 ## Setting up Caddy
 
@@ -86,9 +86,9 @@ sudo chown -R root:copyparty /mnt/data/copyparty
 sudo chmod -R 2775 /mnt/data/copyparty    # leading 2 = setgid bit
 ```
 
-I created directories for two users: `mark` and `renee`. Since I wanted hashed passwords, I needed to generate them in advance.
+In the steps above, I created directories for two users: `mark` (me) and `renee` (my wife).
 
-Run this command for each user (replace `username:password` with actual values) to generate the hashed passwords:
+Since I wanted hashed passwords, I needed to generate them in advance. Run this command for each user (replace `username:password` with actual values) to generate the hashed passwords:
 
 ```bash
 sudo -u copyparty python3 /usr/local/bin/copyparty-sfx.py --ah-alg argon2 --ah-gen username:password
@@ -137,9 +137,11 @@ Add this configuration:
     A: renee
 ```
 
-Comments need two spaces before the `#`. I was very puzzled by this, so don't make that mistake!
+This config allows anyone on my network to view files, but `mark` and `renee` have to log in for special admin privileges. The config also sets up private directories for my wife and I.
 
-Once logged in, users can change their passwords via the control panel. For resets, you'll need to SSH on to the server and update the config manually.
+Note that comments in this file need two spaces before the `#`. I had errors due to this, so don't make the same mistake!
+
+Adding `chpw` to the config means that once logged in, users can change their passwords via the control panel. For password resets, you'll need to SSH on to the server and update the config manually.
 
 Now, create a systemd service file at `/etc/systemd/system/copyparty.service`:
 
@@ -239,7 +241,13 @@ One nice thing about Copyparty is that it doesn't mess with your files or direct
 
 Before uploading everything to the server, I spent time organising my files. I gathered photos and videos from various devices and USB drives into one folder on my laptop, then used and amazing tool called [Czkawka](https://github.com/qarmin/czkawka) to find and remove duplicates and broken files. This left me with about 47,000 files.
 
-Next, I used [exiftool](https://exiftool.org/) (also amazing) to sort them by dates in the metadata into a `Sorted` directory with a `yyyy/mm/dd` structure inside. The command prioritised sorting by the original dates from the device.
+Along the way, I found this handy command to remove empty directories:
+
+```bash
+find . -type d -empty -delete
+```
+
+Next, I used [exiftool](https://exiftool.org/) (also amazing) to move files by dates in the metadata into a `Sorted` directory with a `yyyy/mm/dd` structure inside. The command prioritised sorting by the original dates set by the devices.
 
 ```bash
 exiftool -r -P -progress \
@@ -252,19 +260,13 @@ exiftool -r -P -progress \
   .
 ```
 
-Along the way, I found this handy command to remove empty directories:
+I initially sorted by modified date as well, but that was unreliable since some files had been edited years after they were created. I had to restart the process a few times due to various teething issues like this! Thankfully I had backups before I started moving files around.
 
-```bash
-find . -type d -empty -delete
-```
+The `exiftool` command moved about 40,000 files, leaving 7,000 that needed another approach.
 
-I initially tried sorting by modified date as well, but that was unreliable since some files had been edited years after they were created. I had to restart the process a few times due to various teething issues like this! Thankfully I had backups before I started.
+Many of these had dates in their filenames in a mix of formats, so I wrote a Python script to detect them using regexes and moved the files accordingly.
 
-The `exiftool` command handled about 40,000 files, leaving 7,000 that needed another approach.
-
-Many of these had dates in their filenames in a mix of formats, so I wrote a Python script to detect them using regexes and move the files accordingly.
-
-Disclaimer: I used AI to help write most of this script. I tested it thoroughly with my own files, but you should test it yourself before using it to move your files.
+Disclaimer: I used AI to help write most of this script. I tested it thoroughly with my own files, but I highly recommend testing it yourself on a subset of your files first.
 
 ```python
 # Move files from `./Unsorted` into `./Sorted/yyyy/mm/dd` if valid
@@ -432,32 +434,33 @@ if __name__ == "__main__":
     main()
 ```
 
-After running the script, I had about 500 files left without reliable dates in the metadata or filenames. I decided to sort them manually, which was tedious but rewarding.
-
-The whole organisation process took around two weeks, but it felt worth the effort.
+After running the script, I had about 500 files left without reliable dates in the metadata or filenames. I decided to sort them manually, which was incredibly tedious. However, it felt worth the effort in the end!
 
 ## Copying files to the server
 
 With files organised and duplicates removed, it was time to upload them to Copyparty.
 
-The simplest way is through the web UI. I dragged and dropped almost 420GB of files, and it uploaded at about 45 MB/s.
+The simplest way is through the web UI. I dragged and dropped 420GB of files, and it uploaded without errors at about 45 MB/s.
 
-For a more reliable and faster method, consider using WebDAV with [rclone](https://github.com/rclone/rclone). I was lazy this time, so I didn't use this approach. I would have looked into this if the browser upload did not work.
+For a more reliable and faster method, consider using WebDAV with [rclone](https://github.com/rclone/rclone). I was lazy this time, so I didn't use this approach. I would have looked into this if the browser upload method failed.
 
-## Browse files in the browser
+## View files in the browser
 
 Copyparty has a fun and quirky UI (in my opinion) that allows you to browse images and videos in a gallery. It's not the best I've ever used, but I quite like it!
 
-I can now go to `https://copyparty.home` on my laptop or phone and browse almost 20 years of family memories.
+I can now go to `https://copyparty.home` on my laptop or phone and browse almost 20 years of memories.
 
 ## What's next?
 
 Here are a few items on my to-do list:
 
-- **Backup strategy**: I've manually backed up to two USB drives so far. Automating this would be ideal.
-- **iOS backups**: I need to figure out direct uploads to Copyparty from iPhones for my wife and me.
-- **Replace other Nextcloud features**: Move calendars and contacts from my VPS Nextcloud to the home server.
+- **Backup strategy**: I've done manual backups to two USB drives, but automating this would be ideal.
+- **iOS backups**: I need to figure out how to do direct uploads to Copyparty from iPhones for my wife and me.
+- **Automatically organise new files**: I put a lot of effort into organising files. It would be great to automatically organise new files into this structure. I've been wondering if this is something I could set up on the server itself. 🤔
+- **Replace other Nextcloud features**: I would like to move calendars and contacts from my Nextcloud instance to the home server, but I am not sure of the best way to do this yet.
 
 ## Closing thoughts
 
-Setting up Copyparty has been a great addition to my home server. It's simple, secure, and handles file sharing well. The organisation process was a chore but worthwhile. If you're setting up something similar, I hope this guide helps!
+Setting up Copyparty has been a great addition to my home server. It's simple and handles file sharing well. The organisation process was a chore but worthwhile.
+
+If you're setting up something similar, I hope this guide helps!
