@@ -91,12 +91,14 @@ In the steps above, I created directories for two users: `mark` (me) and `renee`
 Since I wanted hashed passwords, I needed to generate them in advance. Run this command for each user (replace `username:password` with actual values) to generate the hashed passwords:
 
 ```bash
-sudo -u copyparty python3 /usr/local/bin/copyparty-sfx.py --ah-alg argon2 --ah-gen username:password
+sudo -u copyparty python3 /usr/local/bin/copyparty-sfx.py \
+    --ah-alg argon2 \
+    --ah-gen username:password
 ```
 
 This outputs an argon2 hash starting with `+`, which you'll need to paste in the config file.
 
-Create the config file at `/etc/copyparty.conf`:
+Create the config file:
 
 ```bash
 sudo nano /etc/copyparty.conf
@@ -143,7 +145,7 @@ Note that comments in this config file need two spaces before the `#`. I had som
 
 Adding `chpw` to the config means that once logged in, users can change their passwords via the control panel. For password resets, you'll need to SSH on to the server and update the config manually.
 
-Now, create a systemd service file at `/etc/systemd/system/copyparty.service`:
+Now, create a systemd service file:
 
 ```bash
 sudo nano /etc/systemd/system/copyparty.service
@@ -194,7 +196,12 @@ sudo systemctl enable --now copyparty
 sudo systemctl status copyparty
 ```
 
-If you edit the service file later, remember to run `sudo systemctl daemon-reload && sudo systemctl restart copyparty`.
+If you edit the service file later, remember to run:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart copyparty
+```
 
 For me, I could now visit `https://copyparty.home` to verify it was all working.
 
@@ -219,7 +226,9 @@ sudo systemctl start copyparty
 sudo systemctl status copyparty
 ```
 
-Test at `https://copyparty.home`. If anything goes wrong, restore the backup:
+Now test at `https://copyparty.home`.
+
+If anything goes wrong, restore the backup:
 
 ```bash
 sudo systemctl stop copyparty
