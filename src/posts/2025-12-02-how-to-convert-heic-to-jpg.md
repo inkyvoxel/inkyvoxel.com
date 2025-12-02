@@ -6,7 +6,9 @@ tags: [linux]
 
 This guide will walk you through converting HEIC images to JPG using command-line tools on Linux.
 
-I recently moved almost 20 years of family photos and videos to a home server. In more recent years, my wife and I have been taking photos on iPhones, and many of the files were stored in a `.heic` format. While [setting up my home server](/setting-up-copyparty-on-a-home-server) I noticed that I couldn't open them on Linux without installing additional codecs or converting the files. I decided to convert the files for best compatibility across all my devices.
+I recently moved almost 20 years of family photos and videos to a home server. In more recent years, my wife and I have been taking photos on iPhones, and many of the files were stored in a `.heic` format.
+
+While [setting up my home server](/setting-up-copyparty-on-a-home-server) I noticed that I couldn't open HEIC files on Linux without installing additional codecs or converting the files. I decided to convert the files for best compatibility across all my devices.
 
 ## Prerequisites
 
