@@ -122,7 +122,7 @@ Add this configuration:
   renee: +cyFq6XZvHAHHU_o1uM83_U2xmfVCpPfP
 
 # create volumes:
-[/]  # create a volume at "/" (the webroot), which will
+[/]
   /mnt/data/copyparty
   accs:
     A: mark,renee  # mark and renee have all permissions
