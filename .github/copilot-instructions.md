@@ -50,10 +50,19 @@ Eleventy (11ty) static site generator blog with minimalist, monospace design. So
 ### Local Development
 
 ```bash
+mise install                   # Install Node.js LTS (defined in mise.toml)
 npm install                    # First-time setup
 npx @11ty/eleventy --serve     # Dev server with live reload (localhost:8080)
 npm run build                  # Production build to _site/
 ```
+
+### Code Quality
+
+```bash
+npx @biomejs/biome check --write .    # Format, lint, and organise imports
+```
+
+- **Biome configuration** in `biome.json`: tab indentation, double quotes for JavaScript, organise imports enabled
 
 ### Creating New Posts
 
@@ -67,7 +76,8 @@ npm run build                  # Production build to _site/
    ---
    ```
 3. Write Markdown content (supports standard GFM)
-4. **Per-post styling**: Add `<style>` tags directly in Markdown for post-specific CSS (e.g., interactive demos)
+4. **Existing tags** (use these for consistency): `ai`, `azure`, `cloud`, `cybersecurity`, `leadership`, `linux`, `self-hosting`, `software-engineering`
+5. **Per-post styling**: Add `<style>` tags directly in Markdown for post-specific CSS (e.g., interactive demos)
    - Style scoped elements with custom classes (`.demo`, `.custom-widget`)
    - Use CSS variables `var(--primary)`, `var(--light)`, `var(--dark)` for theme consistency
 
@@ -81,7 +91,7 @@ npm run build                  # Production build to _site/
 ### SEO & Analytics
 
 - **Meta tags**: Full Open Graph + Twitter Card setup in `layout.liquid` (uses `{{ type }}` frontmatter for og:type)
-- **Sitemap**: Auto-generated at `/sitemap.xml` from `collections.all` (excludes drafts with `{% if not page.data.draft %}`)
+- **Sitemap**: Auto-generated at `/sitemap.xml` from `collections.all`
 - **Analytics**: Umami script in layout footer (self-hosted at `umami.inkyvoxel.app`)
 - **Canonical URLs**: `{{ site.url }}{{ page.url }}` pattern for canonical links
 
@@ -136,8 +146,11 @@ npm run build                  # Production build to _site/
 
 ## Dependencies & Configuration
 
-- **`@11ty/eleventy` v3.0.0**: Core static site generator
-- **`@11ty/eleventy-plugin-rss` v2.0.2**: Atom feed generation
-- **`luxon`**: DateTime library for custom date filters
+- **`@11ty/eleventy` v3.0.0**: Core static site generator (dev dependency)
+- **`@11ty/eleventy-plugin-rss` v2.0.2**: Atom feed generation (dev dependency)
+- **`luxon`**: DateTime library for custom date filters (`readableDate`, `isoDate`) - imported in `.eleventy.js`
+- **`@biomejs/biome` v2.3.8**: All-in-one formatter, linter, and import organiser (dev dependency)
 - **`package.json` type**: `"type": "module"` (ES modules, not CommonJS)
-- **`.eleventy.js` exports**: Default async function (for async site data loading)
+- **`.eleventy.js` exports**: Default async function (for async site data loading via `loadSiteData()`)
+- **Node.js version**: Managed by `mise` (LTS version specified in `mise.toml`)
+- **Minimal dependencies**: No bundler, no framework beyond Eleventy, no external CSS/JS files
