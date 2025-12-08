@@ -1,18 +1,19 @@
 {
-  "name": "inkyvoxel.com",
-  "version": "1.0.0",
-  "description": "Blog for Mark Brady.",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx @11ty/eleventy"
-  },
-  "keywords": [],
-  "author": "Mark Brady <hello@inkyvoxel.com> (https://www.inkyvoxel.com)",
-  "license": "MIT",
-  "devDependencies": {
-    "@11ty/eleventy": "^3.0.0",
-    "@11ty/eleventy-plugin-rss": "^2.0.2"
-  }
+	"name": "inkyvoxel.com",
+	"version": "1.0.0",
+	"description": "Blog for Mark Brady.",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "npx @11ty/eleventy"
+	},
+	"keywords": [],
+	"author": "Mark Brady <hello@inkyvoxel.com> (https://www.inkyvoxel.com)",
+	"license": "MIT",
+	"devDependencies": {
+		"@11ty/eleventy": "^3.0.0",
+		"@11ty/eleventy-plugin-rss": "^2.0.2",
+		"@biomejs/biome": "2.3.8"
+	}
 }

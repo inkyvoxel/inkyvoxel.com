@@ -1,5 +1,5 @@
 {
-  "layout": "post.liquid",
-  "tags": "post",
-  "permalink": "/{{ page.fileSlug }}/"
+	"layout": "post.liquid",
+	"tags": "post",
+	"permalink": "/{{ page.fileSlug }}/"
 }
