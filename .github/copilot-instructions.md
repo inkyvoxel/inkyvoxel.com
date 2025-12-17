@@ -92,7 +92,6 @@ npx @biomejs/biome check --write .    # Format, lint, and organise imports
 
 - **Meta tags**: Full Open Graph + Twitter Card setup in `layout.liquid` (uses `{{ type }}` frontmatter for og:type)
 - **Sitemap**: Auto-generated at `/sitemap.xml` from `collections.all`
-- **Analytics**: Umami script in layout footer (self-hosted at `umami.inkyvoxel.app`)
 - **Canonical URLs**: `{{ site.url }}{{ page.url }}` pattern for canonical links
 
 ## Styling & Design System
