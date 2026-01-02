@@ -1,7 +1,7 @@
 ---
 title: Common ports and protocols
 description: Here are a list of common ports and protocols you will see when scanning networks.
-tags: [cybersecurity]
+tags: [networking, cybersecurity]
 ---
 
 When you are scanning networks, there are some common ports and protocols that you will see again and again. Here is a list of common TCP and UDP ports, with short descriptions of what each one is used for.

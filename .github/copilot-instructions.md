@@ -76,7 +76,7 @@ npx @biomejs/biome check --write .    # Format, lint, and organise imports
    ---
    ```
 3. Write Markdown content (supports standard GFM)
-4. **Existing tags** (use these for consistency): `ai`, `azure`, `cloud`, `cybersecurity`, `leadership`, `linux`, `self-hosting`, `software-engineering`
+4. **Existing tags** (use these for consistency): `ai`, `azure`, `cloud`, `cybersecurity`, `leadership`, `linux`, `self-hosting`, `software-engineering`, `personal`, `networking`
 5. **Per-post styling**: Add `<style>` tags directly in Markdown for post-specific CSS (e.g., interactive demos)
    - Style scoped elements with custom classes (`.demo`, `.custom-widget`)
    - Use CSS variables `var(--primary)`, `var(--light)`, `var(--dark)` for theme consistency
