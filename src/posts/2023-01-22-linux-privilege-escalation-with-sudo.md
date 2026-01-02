@@ -4,6 +4,8 @@ description: Learn how to exploit 'sudo' for privilege escalation on Linux.
 tags: [cybersecurity, linux]
 ---
 
+{% include "disclaimer.liquid" %}
+
 The `sudo` command allows users to run commands with root privileges, without being root.
 
 In some cases, non-root users are given the ability to run certain commands with administrative privileges. For example, a `website` user might be configured on a server to run all commands necessary for hosting and managing a website. Some of these commands might have been given permission to run using `sudo`.

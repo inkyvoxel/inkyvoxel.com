@@ -4,6 +4,8 @@ description: Netcat shells are unstable by default, but they can be improved and
 tags: [cybersecurity, linux]
 ---
 
+{% include "disclaimer.liquid" %}
+
 Netcat is easy to use and widely available on many systems, making it a perfect tool for remote shells. However, netcat shells are very unstable. You are always one `Ctrl + C` away from accidentally losing the connection to your target.
 
 If the attacking computer and the target computer are both running Linux, you can use the following technique to stabilise your remote shell, giving you a more robust terminal experience.

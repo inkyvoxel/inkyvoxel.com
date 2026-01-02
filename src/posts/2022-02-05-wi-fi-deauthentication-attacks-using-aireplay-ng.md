@@ -4,6 +4,8 @@ description: Deauthentication attacks allow you to disconnect any device from an
 tags: [cybersecurity]
 ---
 
+{% include "disclaimer.liquid" %}
+
 Wi-Fi deauthentication attacks allow you to disconnect any device from any network, even if you are not connected to the network. You don't even need to know the network's password.
 
 Let's start by describing how to accomplish a Wi-Fi deauthentication attack:

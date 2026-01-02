@@ -4,6 +4,8 @@ description: A cheat sheet of Linux commands used for gathering information abou
 tags: [cybersecurity, linux]
 ---
 
+{% include "disclaimer.liquid" %}
+
 Enumeration is the process of gathering information about a computer system, network, or application. It helps gain valuable insights into the target system.
 
 Here are some commands for Linux enumeration:
