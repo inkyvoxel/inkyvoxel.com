@@ -104,7 +104,7 @@ npx @biomejs/biome check --write .    # Format, lint, and organise imports
 ```
 
 ### Code Block Styling
-- **Box-shadow effect**: `-3px 3px 0 #718093` (retro voxel aesthetic)
+- **Box-shadow effect**: `-2px 2px 0 #718093` (retro voxel aesthetic)
 - **Border**: `2px solid #718093`
 - Inline `code`: inverted colors (black on dark mode, white on light)
 

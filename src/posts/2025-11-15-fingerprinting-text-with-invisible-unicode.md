@@ -8,7 +8,7 @@ tags: [cybersecurity, software-engineering, ai]
 .demo {
   padding: 1rem;
   border: 2px solid var(--primary);
-  box-shadow: -3px 3px 0 var(--primary);
+  box-shadow: -2px 2px 0 var(--primary);
   border-radius: 10px;
 }
 
