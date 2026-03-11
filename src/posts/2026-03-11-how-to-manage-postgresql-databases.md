@@ -67,12 +67,15 @@ Are you stuck in the `psql` session? Use `\q` to quit!
 
 ## System databases and roles you should not remove
 
-Before tidying up, be aware of these built-in databases and the admin role:
+Before tidying up, be aware of these built-in components that should not be removed.
 
-- **`postgres`** — the default maintenance database. Removing it will break things.
-- **`template0`** — a clean fallback template, used when restoring databases with `pg_restore`. Leave this alone.
-- **`template1`** — the template used when creating new databases. Modifying or removing it is not recommended.
-- **`postgres` role** — the default superuser. Do not delete it unless you have set up an alternative superuser first.
+Databases:
+- `postgres` - the default maintenance database. Removing it will break things.
+- `template0` - a clean fallback template, used when restoring databases with `pg_restore`. Leave this alone.
+- `template1` - the template used when creating new databases. Modifying or removing it is not recommended.
+
+Admin role:
+- `postgres` - the default superuser. Do not delete it unless you have set up an alternative superuser first.
 
 ## Deleting unused databases and roles
 
