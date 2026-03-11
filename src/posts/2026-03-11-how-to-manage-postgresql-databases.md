@@ -39,9 +39,9 @@ You can also be prompted for the password when creating roles:
 sudo -u postgres createuser my_app_user --pwprompt
 ```
 
-**Note:** It is out of scope for this guide, but whether PostgreSQL actually asks for that password depends on your authentication rules in `pg_hba.conf`. PostgreSQL will need to be configured in this file for password-based authentication.
+**Note:** PostgreSQL needs to be configured for password authentication (via `pg_hba.conf`), but that is out of scope for this guide. See the [PostgreSQL docs](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html) for details.
 
-This is typically what your local connection string will look like:
+This is typically what a local connection string will look like:
 
 ```
 postgresql://my_app_user:my_password@localhost:5432/my_app_db
