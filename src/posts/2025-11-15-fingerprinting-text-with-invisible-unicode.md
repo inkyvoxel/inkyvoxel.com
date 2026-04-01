@@ -4,59 +4,6 @@ description: How invisible Unicode characters can be used to secretly track text
 tags: [cybersecurity, software-engineering, ai]
 ---
 
-<style>
-.demo {
-  padding: 1rem;
-  border: 2px solid var(--primary);
-  box-shadow: -2px 2px 0 var(--primary);
-  border-radius: 10px;
-}
-
-.demo h3 {
-  color: var(--primary);
-}
-
-.demo textarea,
-.demo input {
-  margin-bottom: 1rem;
-  width: 100%;
-  border-radius: 4px;
-  background-color: var(--light);
-  color: var(--dark);
-  font-size: 1rem;
-  padding: 0.5rem;
-  box-sizing: border-box; 
-}
-
-.demo button {
-  margin-bottom: 1rem;
-  padding: 1rem;
-  background-color: var(--primary);
-  color: var(--dark);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  display: block;
-  transition: filter 0.2s ease;
-}
-
-.demo button:hover {
-  filter: brightness(0.9);
-}
-
-.demo label {
-  display: block;
-  margin-bottom: 1rem;
-}
-
-@media (prefers-color-scheme: light) {
-  .demo button {
-    color: var(--light);
-  }
-}
-</style>
-
 Have you ever wondered if text you copy and paste could be secretly tracked? Or whether AI-generated content could be invisibly watermarked? Well, the answer is yes, and it's easier than you might think.
 
 There's a technique called **'zero-width character fingerprinting'** that uses invisible Unicode characters to embed hidden tracking codes into ordinary text. To the human eye, the text looks completely normal, but hidden within it are invisible markers that can identify where it came from.
@@ -86,7 +33,7 @@ Below is a working demo. Enter some text and a User ID, and it will create a fin
   <textarea id="original-text" rows="4">The quick brown fox jumps over the lazy dog.</textarea>
   <label for="hidden-id">User ID (numbers only) between 0 and 65535 that will be used to fingerprint the text:</label>
   <input type="number" id="hidden-id" value="1234" min="0" max="65535">
-  <button onclick="generateFingerprint()">Generate Fingerprint</button>
+  <button type="button" id="generate-fingerprint">Generate Fingerprint</button>
   <p id="fingerprint-info"></p>
   <label for="fingerprinted-text">This is the fingerprinted text:</label>
   <textarea id="fingerprinted-text" rows="4" readonly></textarea>
@@ -98,7 +45,7 @@ Now try the detector. Copy and paste the fingerprinted text generated above into
   <h3>Fingerprint Detector</h3>
   <label for="detect-text">Enter text to analyse:</label>
   <textarea id="detect-text" rows="4"></textarea>
-  <button onclick="detectFingerprint()">Detect Fingerprint</button>
+  <button type="button" id="detect-fingerprint">Detect Fingerprint</button>
   <p id="detect-result"></p>
 </div>
 
@@ -218,88 +165,4 @@ The demos above show how easy it is to implement. The next time you copy and pas
 
 As a disclaimer, I used AI to help generate the code examples in this article, and I've yet to find any watermarking in them! 🕵️
 
-<script>
-// Fingerprinting functions
-const CHAR_ZERO = '\u200B';
-const CHAR_ONE = '\u200C';
-
-function encodeFingerprint(userId) {
-  const binary = userId.toString(2).padStart(16, '0');
-  return binary.split('').map(bit => bit === '0' ? CHAR_ZERO : CHAR_ONE).join('');
-}
-
-function embedFingerprint(text, userId) {
-  const fingerprint = encodeFingerprint(userId);
-  const words = text.split(' ');
-  
-  if (words.length > 1) {
-    return words[0] + fingerprint + ' ' + words.slice(1).join(' ');
-  }
-  
-  return text + fingerprint;
-}
-
-function extractFingerprint(text) {
-  const pattern = /[\u200B\u200C]+/g;
-  const matches = text.match(pattern);
-  
-  if (!matches || matches.length === 0) {
-    return null;
-  }
-  
-  const binary = matches[0]
-    .split('')
-    .map(char => char === CHAR_ZERO ? '0' : '1')
-    .join('');
-  
-  return parseInt(binary, 2);
-}
-
-function generateFingerprint() {
-  const originalText = document.getElementById('original-text').value;
-  const userId = parseInt(document.getElementById('hidden-id').value);
-  
-  if (!originalText) {
-    alert('Please enter some text');
-    return;
-  }
-  
-  if (isNaN(userId) || userId < 0 || userId > 65535) {
-    alert('Please enter a valid User ID (0-65535)');
-    return;
-  }
-  
-  const fingerprinted = embedFingerprint(originalText, userId);
-  document.getElementById('fingerprinted-text').value = fingerprinted;
-  
-  const charCount = fingerprinted.length - originalText.length;
-  document.getElementById('fingerprint-info').innerHTML = 
-    `<p>💡 Fingerprinted with ${charCount} invisible characters.</p><p>Contains hidden User ID: <strong>${userId}</strong></p>`;
-}
-
-function detectFingerprint() {
-  const text = document.getElementById('detect-text').value;
-  
-  if (!text) {
-    alert('Please enter some text to analyse');
-    return;
-  }
-  
-  const pattern = /[\u200B\u200C\u200D\uFEFF\u2060\u180E]/g;
-  const matches = text.match(pattern);
-  const resultEl = document.getElementById('detect-result');
-  
-  if (!matches || matches.length === 0) {
-    resultEl.innerHTML = `<p>✅ <strong>No hidden characters detected!</strong><br>This text appears clean.</p>`;
-    return;
-  }
-  
-  const extractedId = extractFingerprint(text);
-  
-  if (extractedId !== null) {
-    resultEl.innerHTML = `<p>⚠️ <strong>Hidden fingerprint detected!</strong></p><p>Found ${matches.length} zero-width characters hiding User ID: <strong>${extractedId}</strong></p>`;
-  } else {
-    resultEl.innerHTML = `<p>⚠️ <strong>Hidden characters detected!</strong></p><p>Found ${matches.length} zero-width characters, but could not decode a valid User ID. Try using the fingerprint generator above.</p>`;
-  }
-}
-</script>
+<script src="/assets/js/fingerprint-demo.js"></script>
