@@ -1,5 +1,8 @@
 const CHAR_ZERO = "\u200B";
 const CHAR_ONE = "\u200C";
+const FINGERPRINT_PATTERN = /(?:\u200B|\u200C)+/g;
+const ZERO_WIDTH_DETECTION_PATTERN =
+	/(?:\u200B|\u200C|\u200D|\uFEFF|\u2060|\u180E)/g;
 
 function encodeFingerprint(userId) {
 	const binary = userId.toString(2).padStart(16, "0");
@@ -21,8 +24,7 @@ function embedFingerprint(text, userId) {
 }
 
 function extractFingerprint(text) {
-	const pattern = /[\u200B\u200C]+/g;
-	const matches = text.match(pattern);
+	const matches = text.match(FINGERPRINT_PATTERN);
 
 	if (!matches || matches.length === 0) {
 		return null;
@@ -86,8 +88,7 @@ function detectFingerprint() {
 		return;
 	}
 
-	const pattern = /[\u200B\u200C\u200D\uFEFF\u2060\u180E]/g;
-	const matches = text.match(pattern);
+	const matches = text.match(ZERO_WIDTH_DETECTION_PATTERN);
 
 	if (!matches || matches.length === 0) {
 		resultEl.innerHTML =

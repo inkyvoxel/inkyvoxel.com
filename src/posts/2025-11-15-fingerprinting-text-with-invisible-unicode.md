@@ -87,7 +87,7 @@ To extract the fingerprint, you search for zero-width characters and decode them
 ```js
 function extractFingerprint(text) {
   // Find all zero-width characters
-  const pattern = /[\u200B\u200C]+/g;
+  const pattern = /(?:\u200B|\u200C)+/g;
   const matches = text.match(pattern);
 
   if (!matches || matches.length === 0) {
@@ -115,7 +115,7 @@ The good news is that zero-width characters are easy to remove if you know they 
 ```js
 function removeFingerprints(text) {
   // Remove all zero-width characters
-  return text.replace(/[\u200B\u200C\u200D\uFEFF\u2060\u180E]/g, "");
+  return text.replace(/(?:\u200B|\u200C|\u200D|\uFEFF|\u2060|\u180E)/g, "");
 }
 ```
 
@@ -123,7 +123,7 @@ You can also inspect text programmatically to check for their presence:
 
 ```js
 function hasHiddenCharacters(text) {
-  const pattern = /[\u200B\u200C\u200D\uFEFF\u2060\u180E]/g;
+  const pattern = /(?:\u200B|\u200C|\u200D|\uFEFF|\u2060|\u180E)/g;
   return pattern.test(text);
 }
 ```
@@ -131,7 +131,7 @@ function hasHiddenCharacters(text) {
 To search for these characters in text editors that support regex search, use this pattern:
 
 ```
-[\u200B\u200C\u200D\uFEFF\u2060\u180E]
+(?:\u200B|\u200C|\u200D|\uFEFF|\u2060|\u180E)
 ```
 
 ## Real-world applications
