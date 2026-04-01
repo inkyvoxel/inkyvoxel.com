@@ -23,9 +23,249 @@
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⬛</text></svg>"
     >
     <link rel="alternate" type="application/atom+xml" title="Feed" href="/feed.atom">
-    <link rel="stylesheet" href="/assets/css/site.css">
+    <style>
+      body {
+        font-family: monospace;
+        font-size: 1rem;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        letter-spacing: 0.02em;
+        text-rendering: optimizeLegibility;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        --primary: #c6bdff;
+        --dark: #000;
+        --light: #fff;
+        background-color: var(--dark);
+        color: var(--light);
+      }
+
+      a {
+        font-weight: bold;
+        color: var(--primary);
+      }
+
+      hr {
+        border-style: dashed;
+      }
+
+      p {
+        margin-bottom: 1em;
+      }
+
+      header,
+      main,
+      footer {
+        width: 90%;
+        max-width: 800px;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        padding-top: 1.5rem;
+      }
+
+      header nav ul {
+        display: flex;
+        gap: 1rem;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      footer {
+        text-align: center;
+      }
+
+      header nav li {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        text-align: center;
+        padding: 0;
+      }
+
+      code,
+      pre code {
+        padding: 2px;
+        overflow-x: auto;
+      }
+
+      pre code {
+        display: block;
+      }
+
+      code:not(pre code) {
+        display: inline-block;
+        vertical-align: bottom;
+        white-space: normal;
+        margin-top: 5px;
+      }
+
+      .support {
+        text-align: center;
+        margin: 1rem 0;
+        line-height: 0.8;
+      }
+
+      code,
+      pre code,
+      .support {
+        background-color: #dcdde1;
+        border: 2px solid #718093;
+        box-shadow: -2px 2px 0 #718093;
+        border-radius: 10px;
+      }
+
+      code,
+      pre code,
+      .support,
+      .support a {
+        color: var(--dark);
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .date {
+        font-style: italic;
+        font-size: 0.9rem;
+      }
+
+      @media (prefers-color-scheme: light) {
+        body {
+          --primary: #4d31d8;
+          background-color: var(--light);
+          color: var(--dark);
+        }
+      }
+
+      .voxel {
+        margin-right: 1rem;
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        perspective: 600px;
+        vertical-align: middle;
+        position: relative;
+        transform-style: preserve-3d;
+        animation: spin-cube 2s linear infinite;
+      }
+
+      .voxel .face {
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1em;
+        backface-visibility: hidden;
+        background-color: var(--primary);
+      }
+
+      .voxel .front {
+        transform: rotateY(0deg) translateZ(0.5em);
+      }
+
+      .voxel .back {
+        transform: rotateY(180deg) translateZ(0.5em);
+      }
+
+      .voxel .right {
+        transform: rotateY(90deg) translateZ(0.5em);
+      }
+
+      .voxel .left {
+        transform: rotateY(-90deg) translateZ(0.5em);
+      }
+
+      .voxel .top {
+        transform: rotateX(90deg) translateZ(0.5em);
+      }
+
+      .voxel .bottom {
+        transform: rotateX(-90deg) translateZ(0.5em);
+      }
+
+      @keyframes spin-cube {
+        0% {
+          transform: rotateX(0deg) rotateY(0deg);
+        }
+
+        100% {
+          transform: rotateX(360deg) rotateY(360deg);
+        }
+      }
+
+      .disclaimer {
+        background-color: #fbe8e4;
+        border: 2px solid #8e2710;
+        box-shadow: -2px 2px 0 #8e2710;
+        border-radius: 10px;
+        padding: 1rem;
+        margin: 1rem 0;
+        color: #8e2710;
+      }
+    </style>
     {% if content contains 'class="demo"' %}
-      <link rel="stylesheet" href="/assets/css/demo.css">
+      <style>
+        .demo {
+          padding: 1rem;
+          border: 2px solid var(--primary);
+          box-shadow: -2px 2px 0 var(--primary);
+          border-radius: 10px;
+        }
+
+        .demo h3 {
+          color: var(--primary);
+        }
+
+        .demo textarea,
+        .demo input {
+          margin-bottom: 1rem;
+          width: 100%;
+          border-radius: 4px;
+          background-color: var(--light);
+          color: var(--dark);
+          font-size: 1rem;
+          padding: 0.5rem;
+          box-sizing: border-box;
+        }
+
+        .demo button {
+          margin-bottom: 1rem;
+          padding: 1rem;
+          background-color: var(--primary);
+          color: var(--dark);
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-weight: bold;
+          display: block;
+          transition: filter 0.2s ease;
+        }
+
+        .demo button:hover {
+          filter: brightness(0.9);
+        }
+
+        .demo label {
+          display: block;
+          margin-bottom: 1rem;
+        }
+
+        @media (prefers-color-scheme: light) {
+          .demo button {
+            color: var(--light);
+          }
+        }
+      </style>
     {% endif %}
   </head>
 
