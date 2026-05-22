@@ -24,6 +24,7 @@ export default async function (eleventyConfig) {
 
 	eleventyConfig.addPassthroughCopy({ "./src/robots.txt": "/robots.txt" });
 	eleventyConfig.addPassthroughCopy({ "./src/assets": "/assets" });
+	eleventyConfig.addPassthroughCopy({ "./src/_headers": "_headers" });
 
 	const siteData = await loadSiteData();
 
