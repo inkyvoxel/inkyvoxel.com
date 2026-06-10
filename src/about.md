@@ -1,6 +1,6 @@
 ---
 title: About
-description: "Mark Brady (inkyvoxel) is a software engineer with 15+ years experience building web applications."
+description: "Mark Brady (inkyvoxel) is a software engineer with 15+ years experience building web applications, with a focus on platform engineering and DevSecOps."
 layout: page.liquid
 ---
 
@@ -9,6 +9,8 @@ Hello! I'm Mark Brady, a software engineer with over 15 years of experience buil
 Most of my professional life has been spent working with C# and .NET in large organisations, but I'm always keen to experiment with different programming languages, libraries and frameworks. I'm comfortable on both the backend and frontend of web applications, and I enjoy seeing how all the pieces fit together to create something functional and fun.
 
 I've got lots of experience with cloud platforms like Azure and AWS, and I've been building infrastructure as code using tools like Terraform for nearly a decade. If there's a way to automate something, I'll usually write a script for it.
+
+These days a lot of my focus is on platform engineering and DevSecOps — building the pipelines, infrastructure and guardrails that let teams ship quickly and securely.
 
 Security is another passion of mine. I enjoy finding, exploiting, and fixing vulnerabilities in web applications.
 
