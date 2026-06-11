@@ -36,7 +36,7 @@ This is a static blog built with [Eleventy](https://www.11ty.dev/), deployed on 
 
 `layout.liquid` is the base HTML shell (all CSS lives inline here). `post.liquid` and `page.liquid` both extend `layout.liquid` via the `layout:` frontmatter key. Posts use `post.liquid` by default (set in `src/posts/posts.json`).
 
-The `layout.liquid` conditionally injects `.demo` styles only when rendered content contains `class="demo"` — used for interactive demos embedded in posts.
+The `layout.liquid` conditionally injects `.demo` styles only when rendered content contains `class="demo"` — used for interactive demos embedded in posts. JavaScript for demos lives in `src/assets/js/` and is passthrough-copied to `/assets/js/` (along with `src/robots.txt` and `src/_headers`, configured in `.eleventy.js`).
 
 ### Posts
 
@@ -56,7 +56,7 @@ The `post` tag is automatically applied to all posts via `src/posts/posts.json` 
 
 ### Tags
 
-Tags appear on posts and are aggregated into tag pages. The `tags` and `tag-list` liquid files handle listing. Tag URLs are `/tags/<tag-name>/`. Hyphens in tag names are replaced with spaces in the display.
+Tags appear on posts and are aggregated into tag pages. `src/tags.liquid` renders the tag index at `/tags/`; `src/tag-list.liquid` uses Eleventy pagination over `collections` to generate one page per tag at `/tags/<tag-name>/` (the `all` and `post` collections are filtered out). Hyphens in tag names are replaced with spaces in the display.
 
 ### Eleventy config (`/.eleventy.js`)
 
