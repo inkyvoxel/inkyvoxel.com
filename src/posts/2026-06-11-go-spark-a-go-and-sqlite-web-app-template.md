@@ -1,6 +1,6 @@
 ---
 title: "Go Spark: a Go and SQLite web app template"
-description: "Introducing Go Spark, an open source Go and SQLite web app starter template with secure authentication, TOTP two-factor auth, and Docker deployment."
+description: "Introducing Go Spark, an open source Go and SQLite web app starter template with secure authentication, TOTP two-factor auth, passkeys, and Docker deployment."
 tags: [software-engineering, cybersecurity]
 ---
 
@@ -40,6 +40,7 @@ Passwords are hashed with **Argon2id**, using the OWASP Password Storage Cheat S
 On top of that:
 
 - **Two-factor authentication (TOTP)**: users can set up an authenticator app via QR code, with one-time backup codes generated on confirmation.
+- **Passkeys (WebAuthn)**: users can register passkeys for passwordless, phishing-resistant sign-in backed by their device's biometrics or security key.
 - **Server-side sessions** stored in SQLite, with HTTP-only, SameSite cookies. No JWTs.
 - **Session management**: users can see their active sessions and revoke individual sessions, or sign out everywhere else.
 - **CSRF protection** on forms.
