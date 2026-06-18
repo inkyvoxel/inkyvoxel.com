@@ -52,6 +52,6 @@ If you're testing an application for Broken Access Control vulnerabilities, here
 
 ## Closing thoughts
 
-Preventing Broken Access Control requires a defence-in-depth approach, combining secure coding practices, proper configuration, and regular testing. By implementing these tips, software engineers can significantly reduce the risk of unauthorised access. For bug hunters and pentesters, these detection techniques can help identify vulnerabilities before attackers do.
+Preventing Broken Access Control requires a defence in depth approach, combining secure coding practices, proper configuration, and regular testing. By implementing these tips, software engineers can significantly reduce the risk of unauthorised access. For bug hunters and pentesters, these detection techniques can help identify vulnerabilities before attackers do.
 
 Security is an ongoing process. Stay updated with the latest OWASP guidelines and test your applications thoroughly.
