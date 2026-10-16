@@ -8,6 +8,8 @@ After converting an old laptop into a home server [recently](/using-an-old-lapto
 
 To keep the setup quiet and snappy, I picked up a new 4TB 2.5" SSD to replace the old hard drive. For a home server that will be on 24/7, it felt like a worthwhile investment. The new SSD has more storage space, has less noise, less heat, lower power draw and (I hope) better reliability.
 
+> **Update (October 2026):** Only follow this guide on a **blank** drive. The `luksFormat` and `mkfs.ext4` steps below create a new encrypted volume and a new filesystem, which destroys anything already on the disk. If you are re-following this after reinstalling the OS, and the drive still holds data you want, see [Rebuilding my home server on Debian 13](/rebuilding-my-home-server-on-debian) instead. That post also covers two fixes to the `crypttab` and `fstab` lines further down: using a keyfile rather than a second passphrase prompt, and adding `nofail` so a failed unlock doesn't strand the boot in an emergency shell.
+
 ## Steps I followed
 
 First, I removed the old HDD from the laptop and fitted the new 2.5" SSD. I didn't want the old drive to go to waste, so I popped it into a 2.5" USB caddy. That way, I can still plug it in via USB and browse the old files if I ever need to.
@@ -29,6 +31,8 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 ```
 
 I wanted to encrypt the SSD using LUKS, so I ran the following (using `/dev/sdb`, which matched the label from above):
+
+**Warning:** this erases the disk. Only run it on a drive you are happy to wipe.
 
 ```bash
 sudo cryptsetup luksFormat /dev/sdb
