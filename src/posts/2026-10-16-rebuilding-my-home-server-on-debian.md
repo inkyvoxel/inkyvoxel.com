@@ -15,8 +15,6 @@ This summer I rebuilt the whole thing on Debian 13, replaced Copyparty with [Imm
 
 The interesting part wasn't the rebuild. It was discovering that 2,156 of my 45,000 photos had the wrong date, and that my own earlier guides would have destroyed my data if I'd followed them literally.
 
-Everything below is in a public repo if you want the actual configs and scripts: [github.com/inkyvoxel/homelab](https://github.com/inkyvoxel/homelab).
-
 ## Why Debian
 
 Nothing was wrong with Ubuntu Server 24.04. I wanted a smaller base, no snaps, and I'd just been [getting Debian working nicely on my Framework laptop](/getting-the-fingerprint-reader-working-on-framework-13-and-debian), so it was fresh in my head.
@@ -368,5 +366,3 @@ In the spirit of these being honest write-ups rather than tidy ones:
 The rebuild itself was a weekend. The photos took two months, and that was the part that mattered. Nothing in this project found a hardware fault or a security breach. What it found was quiet data loss: files that would have vanished in an import, 2,156 wrong dates, 56 photos that existed in exactly one place, and 28 files that one `rm -rf` would have taken with them.
 
 If you take one thing from this, make it the checksum manifest. It's one command, it costs an hour of CPU time, and it's the only reason I know what did and didn't survive.
-
-All the configs, scripts and the decision log are at [github.com/inkyvoxel/homelab](https://github.com/inkyvoxel/homelab), including the things I tried and abandoned.
